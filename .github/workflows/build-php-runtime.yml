@@ -6,7 +6,8 @@ on:
     paths-ignore:
       - 'assets/php-runtime/**'
       - 'assets/clang/**'
-      - 'assets/csharp-runtime/**'
+      - 'assets/csharp-playground.js'
+      - 'assets/clang-worker.js'
   workflow_dispatch:
 
 permissions:
@@ -41,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/php-runtime assets/clang assets/csharp-runtime assets/csharp-playground.js
+          git add assets/php-runtime assets/clang assets/csharp-playground.js assets/clang-worker.js
           if git diff --cached --quiet; then
             echo "No generated runtime changes."
           else
