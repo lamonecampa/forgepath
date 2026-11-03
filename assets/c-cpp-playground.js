@@ -16,7 +16,7 @@
  };worker.onerror=e=>{output.textContent='Worker error: '+e.message;busy=false;$('cc-run').disabled=false;setStatus('Worker error');};};
  const run=()=>{if(busy)return;busy=true;$('cc-run').disabled=true;$('cc-run').textContent='Compiling…';output.textContent='Menyiapkan compiler WebAssembly…';setStatus('Memuat toolchain');start();worker.postMessage({type:'run',language:language.value,standard:standard.value,code:code.value,stdin:$('cc-stdin').value});};
  const refreshStandards=()=>{standard.innerHTML='';standards[language.value].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;standard.append(o);});};
- language.addEventListener('change',()=>{refreshStandards();code.value=examples[language.value].hello;example.value='hello';if(worker){worker.terminate();worker=null;}activeLang=null;setStatus('Compiler akan dimuat saat Run');});
+ language.addEventListener('change',()=>{refreshStandards();code.value=examples[language.value].hello;example.value='hello';if(worker){worker.terminate();worker=null;}activeLang=null;busy=false;$('cc-run').disabled=false;$('cc-run').textContent='▶ Compile & Run';setStatus('Compiler akan dimuat saat Run');});
  example.addEventListener('change',()=>{code.value=examples[language.value][example.value];});
  $('cc-run').addEventListener('click',run);$('cc-stop').addEventListener('click',stop);
  $('cc-reset').addEventListener('click',()=>{code.value=examples[language.value].hello;$('cc-stdin').value='';output.textContent='Contoh awal dipulihkan.';});
