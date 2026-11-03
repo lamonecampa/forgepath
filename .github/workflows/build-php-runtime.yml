@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'assets/php-runtime/**'
+      - 'assets/clang/**'
   workflow_dispatch:
 
 permissions:
@@ -31,14 +32,16 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build PHP WebAssembly assets
         run: npm run build:php
+      - name: Build C/C++ Clang WebAssembly assets
+        run: npm run build:clang
       - name: Commit generated runtime assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/php-runtime
+          git add assets/php-runtime assets/clang
           if git diff --cached --quiet; then
             echo "No generated runtime changes."
           else
-            git commit -m "Build PHP WebAssembly runtime assets"
+            git commit -m "Build browser compiler runtime assets"
             git push origin main
           fi
