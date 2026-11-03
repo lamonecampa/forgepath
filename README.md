@@ -1,6 +1,6 @@
 # ForgePath
 
-**A beginner-first learning portal for PHP, MySQL, and Laravel.**
+**A beginner-first learning portal for HTML, CSS, JavaScript, PHP, MySQL, and Laravel.**
 
 ForgePath is a standalone static website designed to guide new learners from web fundamentals to a working CRUD application.
 
@@ -14,14 +14,14 @@ After enabling GitHub Pages:
 
 1. **Start Here** — web architecture, HTML, CSS, and programming logic.
 2. **HTML Course** — 16 modules from document structure and core elements to forms, semantics, multimedia, a personal website project, and Netlify deployment.
-2. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
-3. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
-4. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
-5. **PHP Playground** — runs PHP 8.4 in the browser using the official PHP.wasm runtime. The runtime assets are built by GitHub Actions and committed under `assets/php-runtime/`.
-6. **PHP Lab** — lightweight structural checks and additional PHP exercises.
-7. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
-8. **Knowledge Check** — 12 auto-graded questions with explanations.
-9. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+3. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
+4. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
+5. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
+6. **PHP Playground** — runs PHP 8.4 in the browser using the official PHP.wasm runtime. The runtime assets are built by GitHub Actions and committed under `assets/php-runtime/`.
+7. **PHP Lab** — lightweight structural checks and additional PHP exercises.
+8. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
+9. **Knowledge Check** — 12 auto-graded questions with explanations.
+10. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
 
 ## Technology
 
