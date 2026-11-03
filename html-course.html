@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Kursus HTML dasar ForgePath: 16 modul dari struktur dokumen hingga proyek dan deployment website statis.">
+<meta name="theme-color" content="#f7f8f5"><title>HTML Course — ForgePath</title>
+<link rel="stylesheet" href="assets/style.css"><script defer src="assets/app.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a href="start.html">Start here</a><a class="active" href="html-course.html">HTML Course</a><a href="playground.html">Web Playground</a><a href="php-course.html">PHP</a><a href="mysql-course.html">MySQL</a><a href="laravel-course.html">Laravel</a><a href="projects.html">Projects</a></nav><a class="nav-cta" href="playground.html">Praktik HTML ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header>
+<main class="wrap">
+<section class="page-hero"><div class="eyebrow">FOUNDATION / HTML 01–16</div><h1>HTML dari nol.</h1><p>Kuasai struktur dokumen, elemen konten, formulir, semantik, multimedia, lalu susun dan publikasikan website pribadi. Materi disusun ulang menjadi pembelajaran bertahap dengan contoh, latihan, dan checkpoint.</p><div class="tag-row"><span>16 modul</span><span>Beginner</span><span>Project based</span><span>HTML Living Standard</span></div></section>
+<div class="content-layout">
+<aside class="sidebar"><p class="sidebar-label">HTML LEARNING PATH</p>
+<a href="#m1">01 · Struktur dasar</a><a href="#m2">02 · Tag, elemen, atribut</a><a href="#m3">03 · Paragraf</a><a href="#m4">04 · Heading</a><a href="#m5">05 · Komentar</a><a href="#m6">06 · Format teks</a><a href="#m7">07 · Link</a><a href="#m8">08 · Gambar</a><a href="#m9">09 · List</a><a href="#m10">10 · Tabel</a><a href="#m11">11 · Form</a><a href="#m12">12 · Semantik</a><a href="#m13">13 · Video</a><a href="#m14">14 · Audio</a><a href="#m15">15 · Proyek web</a><a href="#m16">16 · Deploy Netlify</a>
+<p class="sidebar-label" style="margin-top:25px">PRAKTIK</p><a href="playground.html">Web Playground ↗</a><a href="projects.html">Project Path ↗</a></aside>
+<div class="lessons">
+<section class="lesson" id="m1"><div class="eyebrow">01 / DOCUMENT</div><h2>Struktur dasar HTML</h2><p>HTML (HyperText Markup Language) mendeskripsikan struktur dan makna konten, bukan bahasa pemrograman. Browser membaca markup lalu membangun DOM untuk dirender. Dokumen modern menggunakan HTML Living Standard.</p><div class="codebox">&lt;!doctype html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Halaman Pertama&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo, dunia!&lt;/h1&gt;
+  &lt;p&gt;Ini halaman HTML pertama saya.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div><h3>Tiga bagian penting</h3><ul><li><code>&lt;!doctype html&gt;</code> mengaktifkan mode standar browser.</li><li><code>&lt;head&gt;</code> berisi metadata, judul, stylesheet, dan informasi dokumen.</li><li><code>&lt;body&gt;</code> berisi konten yang ditampilkan di halaman.</li></ul><p><b>Latihan:</b> Buat <code>index.html</code>, ubah judul tab, bahasa dokumen, dan teks heading. Buka di browser.</p><p><a href="https://www.petanikode.com/html-dasar/" target="_blank" rel="noopener">Referensi Petani Kode: HTML Dasar ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m1" data-group="html-course"> Saya dapat membuat dokumen HTML valid dengan struktur dasar.</label></section>
+<section class="lesson" id="m2"><div class="eyebrow">02 / SYNTAX</div><h2>Tag, elemen, dan atribut</h2><p>Tag adalah penanda markup, elemen adalah unit lengkap yang dibentuk tag dan kontennya, sedangkan atribut memberi informasi atau konfigurasi tambahan pada elemen.</p><div class="codebox">&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;
+  Buka Example
+&lt;/a&gt;
+
+&lt;img src="foto.jpg" alt="Pemandangan pegunungan" width="640"&gt;</div><ul><li>Gunakan huruf kecil untuk nama tag dan atribut.</li><li>Susun elemen bersarang dengan benar, elemen terakhir dibuka ditutup lebih dulu.</li><li>Berikan tanda kutip pada nilai atribut.</li><li>Elemen void seperti <code>img</code>, <code>br</code>, <code>input</code> tidak memiliki tag penutup.</li></ul><p>Jangan menghafal semua tag. Pahami pola, lalu gunakan referensi saat diperlukan.</p><p><a href="https://www.petanikode.com/html-tag-elemen-atribut/" target="_blank" rel="noopener">Referensi Petani Kode: Tag, Elemen, Atribut ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m2" data-group="html-course"> Saya dapat membedakan tag, elemen, atribut, dan nesting.</label></section>
+<section class="lesson" id="m3"><div class="eyebrow">03 / TEXT</div><h2>Membuat paragraf</h2><p>Gunakan <code>&lt;p&gt;</code> untuk satu unit paragraf. Browser mengatur jarak paragraf secara default. Jangan memakai banyak spasi atau baris kosong untuk mengatur layout; gunakan CSS.</p><div class="codebox">&lt;p&gt;HTML menyusun struktur halaman web.&lt;/p&gt;
+&lt;p&gt;CSS mengatur presentasi visual halaman.&lt;/p&gt;
+&lt;p&gt;JavaScript menambahkan perilaku interaktif.&lt;/p&gt;</div><p><code>&lt;br&gt;</code> digunakan untuk pemisah baris yang memang bermakna, misalnya alamat atau puisi. <code>&lt;hr&gt;</code> menandai perubahan tema atau pemisah tematik, bukan sekadar garis dekoratif.</p><p><b>Latihan:</b> Tulis tiga paragraf tentang profil, minat, dan tujuan belajar. Coba hapus paragraf dan amati perubahan struktur.</p><p><a href="https://www.petanikode.com/html-paragraf/" target="_blank" rel="noopener">Referensi Petani Kode: Paragraf ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m3" data-group="html-course"> Saya menggunakan p, br, dan hr sesuai maknanya.</label></section>
+<section class="lesson" id="m4"><div class="eyebrow">04 / HIERARCHY</div><h2>Heading dan hierarki konten</h2><p>Heading <code>h1</code> sampai <code>h6</code> membentuk hierarki judul. Pilih berdasarkan struktur dokumen, bukan ukuran visual. Ukuran, warna, dan jarak heading seharusnya diatur dengan CSS.</p><div class="codebox">&lt;h1&gt;Panduan Berkebun&lt;/h1&gt;
+  &lt;h2&gt;Persiapan&lt;/h2&gt;
+    &lt;h3&gt;Memilih Media Tanam&lt;/h3&gt;
+    &lt;h3&gt;Menyiapkan Pot&lt;/h3&gt;
+  &lt;h2&gt;Perawatan&lt;/h2&gt;</div><p>Hindari melompat tingkat heading hanya demi tampilan. Gunakan satu judul utama yang jelas dan subjudul yang menggambarkan bagian.</p><p><a href="https://www.petanikode.com/html-heading/" target="_blank" rel="noopener">Referensi Petani Kode: Heading ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m4" data-group="html-course"> Saya dapat membuat outline heading yang logis.</label></section>
+<section class="lesson" id="m5"><div class="eyebrow">05 / MAINTAINABILITY</div><h2>Komentar HTML</h2><p>Komentar membantu memberi catatan pada kode dan tidak ditampilkan sebagai konten halaman. Jangan menyimpan password, token, data pribadi, atau rahasia di komentar karena source HTML dapat dilihat pengguna.</p><div class="codebox">&lt;!-- Navigasi utama website --&gt;
+&lt;nav aria-label="Navigasi utama"&gt;
+  &lt;a href="index.html"&gt;Beranda&lt;/a&gt;
+&lt;/nav&gt;</div><p><b>Latihan:</b> Tambahkan komentar untuk menandai header, konten utama, dan footer. Periksa View Source pada browser.</p><p><a href="https://www.petanikode.com/html-komentar/" target="_blank" rel="noopener">Referensi Petani Kode: Komentar ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m5" data-group="html-course"> Saya memahami fungsi dan batas keamanan komentar.</label></section>
+<section class="lesson" id="m6"><div class="eyebrow">06 / EMPHASIS</div><h2>Text formatting</h2><p>Gunakan elemen yang menyampaikan makna, bukan sekadar tampilan. <code>strong</code> menunjukkan kepentingan kuat, <code>em</code> memberi penekanan, <code>mark</code> menandai bagian relevan, dan <code>del</code>/<code>ins</code> menandai perubahan.</p><div class="codebox">&lt;p&gt;&lt;strong&gt;Penting:&lt;/strong&gt; simpan pekerjaan secara berkala.&lt;/p&gt;
+&lt;p&gt;Saya &lt;em&gt;sangat&lt;/em&gt; tertarik belajar web.&lt;/p&gt;
+&lt;p&gt;Harga lama &lt;del&gt;Rp100.000&lt;/del&gt;
+   menjadi &lt;ins&gt;Rp85.000&lt;/ins&gt;.&lt;/p&gt;
+&lt;p&gt;Kata kunci: &lt;mark&gt;aksesibilitas&lt;/mark&gt;.&lt;/p&gt;</div><p><code>b</code> dan <code>i</code> dapat digunakan untuk kebutuhan presentasi atau istilah tertentu, tetapi jangan menggantikan semantik <code>strong</code> dan <code>em</code> jika memang ada penekanan makna.</p><p><a href="https://www.petanikode.com/html-text-formatting/" target="_blank" rel="noopener">Referensi Petani Kode: Text Formatting ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m6" data-group="html-course"> Saya memilih elemen format berdasarkan maknanya.</label></section>
+<section class="lesson" id="m7"><div class="eyebrow">07 / NAVIGATION</div><h2>Membuat link</h2><p>Elemen anchor <code>a</code> membuat tautan. Atribut <code>href</code> menentukan tujuan: URL, path relatif, email, telepon, atau fragmen dalam halaman.</p><div class="codebox">&lt;a href="tentang.html"&gt;Tentang kami&lt;/a&gt;
+&lt;a href="#kontak"&gt;Ke bagian kontak&lt;/a&gt;
+&lt;a href="mailto:halo@example.com"&gt;Kirim email&lt;/a&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;
+  Situs eksternal
+&lt;/a&gt;</div><p>Gunakan teks tautan yang menjelaskan tujuan. Untuk tab baru, sertakan <code>rel="noopener"</code>. Hindari teks generik seperti “klik di sini” tanpa konteks.</p><p><a href="https://www.petanikode.com/html-link/" target="_blank" rel="noopener">Referensi Petani Kode: Link ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m7" data-group="html-course"> Saya dapat membuat link internal, eksternal, dan anchor.</label></section>
+<section class="lesson" id="m8"><div class="eyebrow">08 / IMAGES</div><h2>Menampilkan gambar</h2><p>Elemen <code>img</code> memuat gambar melalui atribut <code>src</code>. Atribut <code>alt</code> memberikan alternatif teks untuk pembaca layar atau saat gambar gagal dimuat. Untuk gambar dekoratif, gunakan alt kosong.</p><div class="codebox">&lt;img
+  src="images/taman.jpg"
+  alt="Taman kecil dengan tanaman dalam pot"
+  width="800"
+  height="500"
+  loading="lazy"&gt;</div><ul><li>Optimalkan ukuran file dan gunakan format modern seperti WebP/AVIF bila sesuai.</li><li>Isi dimensi gambar untuk mengurangi layout shift.</li><li>Gunakan <code>loading="lazy"</code> untuk gambar di luar layar awal, bukan otomatis untuk gambar hero utama.</li><li>Pastikan memiliki hak penggunaan gambar.</li></ul><p><a href="https://www.petanikode.com/html-img/" target="_blank" rel="noopener">Referensi Petani Kode: Image ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m8" data-group="html-course"> Saya dapat menampilkan gambar dengan alt yang bermakna.</label></section>
+<section class="lesson" id="m9"><div class="eyebrow">09 / LISTS</div><h2>Membuat list</h2><p>Gunakan unordered list untuk item yang tidak berurutan, ordered list untuk langkah atau peringkat, dan description list untuk istilah beserta penjelasannya.</p><div class="codebox">&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Buat file HTML&lt;/li&gt;
+  &lt;li&gt;Tulis struktur&lt;/li&gt;
+  &lt;li&gt;Buka di browser&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Bahasa markup untuk struktur web.&lt;/dd&gt;
+&lt;/dl&gt;</div><p><b>Latihan:</b> Buat daftar keterampilan dan daftar langkah membuat halaman profil. Gunakan nested list hanya jika relasi bertingkat memang diperlukan.</p><p><a href="https://www.petanikode.com/html-list/" target="_blank" rel="noopener">Referensi Petani Kode: List ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m9" data-group="html-course"> Saya dapat memilih jenis list sesuai struktur data.</label></section>
+<section class="lesson" id="m10"><div class="eyebrow">10 / DATA</div><h2>Membuat tabel</h2><p>Tabel digunakan untuk data tabular, bukan untuk membuat layout halaman. Gunakan <code>caption</code>, <code>thead</code>, <code>tbody</code>, <code>th</code>, dan atribut <code>scope</code> agar relasi header dan sel lebih jelas.</p><div class="codebox">&lt;table&gt;
+  &lt;caption&gt;Jadwal Praktikum&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th scope="col"&gt;Hari&lt;/th&gt;&lt;th scope="col"&gt;Mata Kuliah&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Senin&lt;/td&gt;&lt;td&gt;Pemrograman Web&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Rabu&lt;/td&gt;&lt;td&gt;Basis Data&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</div><p>Untuk tabel kompleks, pelajari <code>rowspan</code>, <code>colspan</code>, dan header berkelompok. Pastikan tabel tetap dapat dipahami pada layar kecil.</p><p><a href="https://www.petanikode.com/html-tabel/" target="_blank" rel="noopener">Referensi Petani Kode: Tabel ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m10" data-group="html-course"> Saya dapat membuat tabel data dengan header yang jelas.</label></section>
+<section class="lesson" id="m11"><div class="eyebrow">11 / INPUT</div><h2>Membuat form</h2><p>Form mengumpulkan input pengguna. Hubungkan setiap kontrol dengan <code>label</code>, pilih tipe input yang sesuai, dan tentukan atribut <code>name</code> agar nilainya dapat dikirim.</p><div class="codebox">&lt;form action="/kontak" method="post"&gt;
+  &lt;label for="nama"&gt;Nama&lt;/label&gt;
+  &lt;input id="nama" name="nama" type="text" required&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input id="email" name="email" type="email" required&gt;
+
+  &lt;label for="pesan"&gt;Pesan&lt;/label&gt;
+  &lt;textarea id="pesan" name="pesan"&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</div><p>Validasi HTML di sisi browser membantu pengalaman pengguna, tetapi bukan pengganti validasi server. Data dari pengguna harus dianggap tidak tepercaya dan divalidasi kembali di backend.</p><p><a href="https://www.petanikode.com/html-form/" target="_blank" rel="noopener">Referensi Petani Kode: Form ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m11" data-group="html-course"> Saya dapat membuat form dengan label dan validasi dasar.</label></section>
+<section class="lesson" id="m12"><div class="eyebrow">12 / MEANING</div><h2>HTML semantik</h2><p>Elemen semantik menjelaskan peran konten. Struktur yang jelas membantu pemeliharaan, navigasi pembaca layar, dan pemahaman mesin pencari. Semantik bukan tombol ajaib untuk menaikkan ranking SEO.</p><div class="codebox">&lt;header&gt;...&lt;/header&gt;
+&lt;nav aria-label="Utama"&gt;...&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Judul artikel&lt;/h1&gt;
+    &lt;section&gt;...&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;aside&gt;Konten terkait&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</div><p>Gunakan <code>main</code> untuk konten utama, <code>nav</code> untuk navigasi, <code>article</code> untuk konten mandiri, <code>section</code> untuk kelompok tematik, dan <code>aside</code> untuk konten terkait. Jangan mengganti semua div secara membabi buta.</p><p><a href="https://www.petanikode.com/html-semantik/" target="_blank" rel="noopener">Referensi Petani Kode: Semantik ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m12" data-group="html-course"> Saya dapat menyusun layout dengan elemen semantik.</label></section>
+<section class="lesson" id="m13"><div class="eyebrow">13 / VIDEO</div><h2>Menambahkan video</h2><p>Elemen <code>video</code> mendukung pemutaran media di browser. Sediakan kontrol, fallback, dan subtitle bila tersedia. Jangan memaksa autoplay dengan suara.</p><div class="codebox">&lt;video controls width="640" poster="thumbnail.jpg"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Browser Anda tidak mendukung video HTML.
+&lt;/video&gt;</div><p>Untuk aksesibilitas, sediakan caption/subtitle melalui <code>track</code> dengan file WebVTT. Perhatikan ukuran file, format codec, hak cipta, dan bandwidth.</p><p><a href="https://www.petanikode.com/html-video/" target="_blank" rel="noopener">Referensi Petani Kode: Video ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m13" data-group="html-course"> Saya dapat menyematkan video dengan fallback yang sesuai.</label></section>
+<section class="lesson" id="m14"><div class="eyebrow">14 / AUDIO</div><h2>Menambahkan audio</h2><p>Gunakan <code>audio</code> untuk menyematkan suara. Browser dapat memilih source yang didukung. Kontrol native memberi pengguna kendali pemutaran.</p><div class="codebox">&lt;audio controls preload="metadata"&gt;
+  &lt;source src="narasi.mp3" type="audio/mpeg"&gt;
+  &lt;source src="narasi.ogg" type="audio/ogg"&gt;
+  Browser Anda tidak mendukung audio.
+&lt;/audio&gt;</div><p>Hindari autoplay yang mengganggu. Sediakan transkrip untuk konten audio yang menyampaikan informasi penting dan pastikan file media memiliki izin penggunaan.</p><p><a href="https://www.petanikode.com/html-audio/" target="_blank" rel="noopener">Referensi Petani Kode: Audio ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m14" data-group="html-course"> Saya dapat menyematkan audio dengan kontrol dan fallback.</label></section>
+<section class="lesson" id="m15"><div class="eyebrow">15 / BUILD</div><h2>Proyek: website pribadi</h2><p>Gabungkan materi menjadi website profil sederhana. Targetnya bukan desain rumit, tetapi struktur konsisten, navigasi berfungsi, konten bermakna, dan tampilan responsif.</p><h3>Spesifikasi minimum</h3><ol><li>Header berisi nama atau identitas proyek.</li><li>Navigasi ke bagian Profil, Keahlian, Proyek, dan Kontak.</li><li>Konten utama menggunakan heading dan paragraf yang terstruktur.</li><li>Daftar keahlian, tabel ringkas bila benar-benar cocok untuk data tabular, dan gambar dengan alt.</li><li>Form kontak dengan label yang benar. Tanpa backend, jelaskan bahwa form hanya demonstrasi.</li><li>Footer berisi informasi hak cipta atau tautan relevan.</li></ol><div class="codebox">project/
+├── index.html
+├── assets/
+│   ├── style.css
+│   └── images/
+└── README.md</div><p><b>Uji hasil:</b> semua link bekerja, tidak ada gambar rusak, heading berurutan, halaman dapat digunakan di ponsel, dan HTML diperiksa dengan <a href="https://validator.w3.org/" target="_blank" rel="noopener">Nu HTML Checker ↗</a>.</p><p><a href="https://www.petanikode.com/html-project/" target="_blank" rel="noopener">Referensi Petani Kode: Proyek Web Pribadi ↗</a> · <a href="playground.html">ForgePath Web Playground ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m15" data-group="html-course"> Saya telah membuat website pribadi dengan struktur HTML yang baik.</label></section>
+<section class="lesson" id="m16"><div class="eyebrow">16 / DEPLOY</div><h2>Publikasikan website dengan Netlify</h2><p>Website HTML/CSS/JS statis dapat di-host tanpa server aplikasi. Netlify mendukung deployment melalui Git repository atau unggah folder hasil build. Untuk proyek pertama, gunakan folder yang berisi <code>index.html</code> sebagai publish directory.</p><h3>Alur deployment berbasis Git</h3><ol><li>Pastikan proyek berjalan lokal dan file utama bernama <code>index.html</code>.</li><li>Push folder proyek ke repository GitHub.</li><li>Masuk Netlify dan hubungkan repository.</li><li>Atur build command kosong jika tidak ada proses build, dan publish directory ke root proyek (atau folder publik yang tepat).</li><li>Deploy, lalu uji URL publik, navigasi, aset, dan tampilan mobile.</li></ol><div class="callout">Jangan unggah file rahasia, konfigurasi lokal, kredensial, atau folder dependency yang tidak diperlukan. Website statis tidak menjalankan PHP. Jika proyek membutuhkan PHP/MySQL, gunakan hosting yang mendukung backend atau arsitektur layanan terpisah.</div><p><a href="https://www.petanikode.com/html-netlify/" target="_blank" rel="noopener">Referensi Petani Kode: Hosting HTML di Netlify ↗</a> · <a href="https://docs.netlify.com/" target="_blank" rel="noopener">Dokumentasi Netlify ↗</a></p><label class="check-row"><input type="checkbox" data-progress="html-m16" data-group="html-course"> Saya memahami cara deploy website statis dan batasannya.</label></section>
+<div class="panel"><div class="panel-head"><h2>HTML course progress</h2><span class="muted" data-progress-count="html-course">0/16</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="html-course"></div></div><p class="muted">Progress disimpan di browser ini menggunakan localStorage, bukan akun cloud. Selesaikan proyek akhir sebelum melanjutkan ke CSS dan JavaScript lebih dalam.</p><a class="button button-dark" href="playground.html">Praktikkan di Web Playground <span>→</span></a></div>
+<div class="note-strip"><span class="note-icon">i</span><div><b>Catatan sumber dan pembaruan</b><p>Kursus ini merupakan penyusunan materi dan contoh latihan orisinal ForgePath berdasarkan urutan topik tutorial HTML Petani Kode. Bukan salinan artikel. Gunakan tautan referensi untuk bacaan tambahan. Praktikkan juga standar HTML modern; beberapa contoh tutorial lama mungkin perlu disesuaikan dengan praktik aksesibilitas, keamanan, dan deployment saat ini.</p></div></div>
+</div></div></main>
+<footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer>
+</body></html>
