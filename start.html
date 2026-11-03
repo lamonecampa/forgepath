@@ -1,0 +1,98 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Start Here — ForgePath</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/app.js"></script></head><body>
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a class="active" href="start.html">Start here</a><a href="php-lab.html">PHP Lab</a><a href="sql-lab.html">SQL Lab</a><a href="projects.html">Projects</a></nav><a class="nav-cta" href="quiz.html">Uji pemahaman ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header>
+<main class="wrap"><section class="page-hero"><div class="eyebrow">START HERE / 00</div><h1>Mulai dari fondasi.</h1><p>Belum pernah menulis kode? Tidak masalah. Ikuti urutan materi ini. Targetnya bukan menghafal sintaks, melainkan memahami bagaimana sebuah aplikasi web bekerja.</p></section>
+<div class="content-layout"><aside class="sidebar"><p class="sidebar-label">YOUR ROADMAP</p><a href="#web" class="active">00 · Cara kerja web</a><a href="#html">01 · HTML</a><a href="#css">02 · CSS</a><a href="#logic">03 · Logika</a><a href="#php">04 · PHP</a><a href="#mysql">05 · MySQL</a><a href="#laravel">06 · Laravel</a><p class="sidebar-label" style="margin-top:25px">TOOLS</p><a href="php-lab.html">PHP Lab ↗</a><a href="sql-lab.html">SQL Lab ↗</a></aside>
+<div class="lessons">
+<section class="lesson" id="web"><div class="eyebrow">00 / THE BIG PICTURE</div><h2>Bagaimana web bekerja?</h2><p>Ketika membuka situs, browser bertindak sebagai client yang mengirim request ke server. Server memproses request, bisa membaca database, lalu mengirim response yang ditampilkan browser.</p><div class="codebox">BROWSER (CLIENT)
+    │  HTTP Request
+    ▼
+WEB SERVER (Apache / Nginx)
+    │
+    ├── PHP menjalankan logika aplikasi
+    │       │
+    │       └── MySQL menyimpan / mengambil data
+    │
+    ▼
+HTML + CSS + JavaScript
+    │  HTTP Response
+    ▼
+BROWSER MENAMPILKAN HALAMAN</div><h3>Peran tiap teknologi</h3><ul><li><b>HTML</b>: struktur dan makna konten halaman.</li><li><b>CSS</b>: tata letak dan tampilan visual.</li><li><b>JavaScript</b>: interaksi yang berjalan di browser.</li><li><b>PHP</b>: logika di sisi server.</li><li><b>MySQL</b>: penyimpanan data relasional.</li><li><b>Laravel</b>: framework PHP untuk menyusun aplikasi dengan pola dan alat yang konsisten.</li></ul><div class="callout">Browser tidak menjalankan file PHP secara langsung. PHP perlu diproses oleh server atau PHP CLI. Membuka file .php langsung dari folder hanya menampilkan teks atau memicu unduhan, bukan menjalankan aplikasinya.</div><label class="check-row"><input type="checkbox" data-progress="web-1" data-group="start"> Saya memahami perbedaan client, server, dan database.</label></section>
+<section class="lesson" id="html"><div class="eyebrow">01 / STRUCTURE</div><h2>HTML: susun halaman</h2><p>HTML menggunakan elemen (tag) untuk memberi struktur. Elemen memiliki nama, atribut, dan konten. Mulai dengan dokumen paling sederhana.</p><div class="codebox">&lt;!doctype html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Halaman Pertama&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo, dunia!&lt;/h1&gt;
+  &lt;p&gt;Ini halaman web pertama saya.&lt;/p&gt;
+  &lt;a href="https://example.com"&gt;Contoh tautan&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div><h3>Elemen yang sering dipakai</h3><p><code>h1–h6</code> untuk heading, <code>p</code> untuk paragraf, <code>a</code> untuk tautan, <code>img</code> untuk gambar, <code>ul/li</code> untuk daftar, <code>form/input</code> untuk formulir, dan <code>table</code> untuk data tabular.</p><label class="check-row"><input type="checkbox" data-progress="html-1" data-group="start"> Saya dapat membuat file index.html dan menampilkannya di browser.</label></section>
+<section class="lesson" id="css"><div class="eyebrow">02 / PRESENTATION</div><h2>CSS: atur tampilan</h2><p>CSS memilih elemen lalu menerapkan aturan visual. Selector menentukan target, property menentukan aspek yang diubah, value menentukan nilainya.</p><div class="codebox">body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f2;
+  color: #202820;
+  margin: 0;
+}
+.card {
+  max-width: 520px;
+  padding: 24px;
+  border: 1px solid #dce3dc;
+  border-radius: 8px;
+}</div><p>Pahami box model: setiap elemen memiliki content, padding, border, dan margin. Biasakan memakai <code>box-sizing: border-box</code> untuk perhitungan ukuran yang lebih mudah.</p><label class="check-row"><input type="checkbox" data-progress="css-1" data-group="start"> Saya dapat menghubungkan file style.css ke HTML.</label></section>
+<section class="lesson" id="logic"><div class="eyebrow">03 / THINKING</div><h2>Logika pemrograman</h2><p>Sebelum bahasa pemrograman, pahami pola berpikir: input → proses → output. Program menjalankan instruksi secara berurutan, memakai percabangan untuk keputusan dan perulangan untuk pekerjaan berulang.</p><div class="codebox"><span class="comment">// Pseudocode menghitung kelulusan</span>
+INPUT nilai
+IF nilai >= 70 THEN
+  OUTPUT "Lulus"
+ELSE
+  OUTPUT "Belum lulus"
+END IF</div><h3>Konsep dasar</h3><ul><li><b>Variabel</b>: tempat memberi nama pada nilai.</li><li><b>Operator</b>: operasi aritmetika, perbandingan, dan logika.</li><li><b>Condition</b>: if/else untuk memilih jalur.</li><li><b>Loop</b>: for/while untuk pengulangan.</li><li><b>Function</b>: kumpulan instruksi yang dapat digunakan ulang.</li></ul><label class="check-row"><input type="checkbox" data-progress="logic-1" data-group="start"> Saya memahami input, proses, output, kondisi, dan perulangan.</label></section>
+<section class="lesson" id="php"><div class="eyebrow">04 / BACKEND</div><h2>PHP: mulai membangun logika server</h2><p>PHP adalah bahasa pemrograman server-side. File PHP diproses oleh interpreter PHP, kemudian hasilnya (sering berupa HTML) dikirim ke browser.</p><div class="codebox">&lt;?php
+$nama = "Dina";
+$nilai = 85;
+
+if ($nilai >= 70) {
+    $status = "Lulus";
+} else {
+    $status = "Belum lulus";
+}
+
+echo "Halo, " . htmlspecialchars($nama);
+echo " - " . $status;
+?&gt;</div><h3>Siapkan lingkungan lokal</h3><ol><li>Instal PHP melalui XAMPP, Laragon, atau instalasi PHP CLI.</li><li>Buat folder proyek di document root (misalnya <code>htdocs</code> untuk XAMPP).</li><li>Simpan kode sebagai <code>index.php</code>.</li><li>Jalankan Apache dan buka <code>http://localhost/nama-folder</code>, atau jalankan <code>php -S localhost:8000</code> dari folder proyek.</li></ol><div class="callout">Latihan interaktif ada di <a href="php-lab.html"><b>PHP Lab</b></a>. Editor di sana membantu menulis dan memeriksa contoh, tetapi eksekusi PHP tetap dilakukan di lingkungan lokalmu.</div><label class="check-row"><input type="checkbox" data-progress="php-1" data-group="start"> Saya berhasil menjalankan file PHP melalui server lokal atau CLI.</label></section>
+<section class="lesson" id="mysql"><div class="eyebrow">05 / DATABASE</div><h2>MySQL: simpan data dengan terstruktur</h2><p>Database relasional menyimpan data dalam tabel yang memiliki kolom dan baris. Primary key mengidentifikasi baris, sementara foreign key menghubungkan tabel.</p><div class="codebox">CREATE DATABASE sekolah;
+USE sekolah;
+
+CREATE TABLE mahasiswa (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nama VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE
+);
+
+INSERT INTO mahasiswa (nama, email)
+VALUES ('Dina', 'dina@example.com');
+
+SELECT id, nama, email
+FROM mahasiswa
+WHERE nama LIKE 'D%';</div><h3>Empat operasi CRUD</h3><ul><li><code>INSERT</code>: menambah record.</li><li><code>SELECT</code>: membaca record.</li><li><code>UPDATE</code>: mengubah record.</li><li><code>DELETE</code>: menghapus record.</li></ul><div class="callout">Gunakan <a href="sql-lab.html"><b>SQL Lab</b></a> untuk latihan query. Lab memakai SQLite di browser, bukan MySQL server. Konsep SQL dasarnya serupa, tetapi beberapa tipe data, fungsi, dan sintaks khusus berbeda.</div><label class="check-row"><input type="checkbox" data-progress="mysql-1" data-group="start"> Saya memahami tabel, primary key, dan query CRUD.</label></section>
+<section class="lesson" id="laravel"><div class="eyebrow">06 / FRAMEWORK</div><h2>Laravel: susun aplikasi dengan struktur</h2><p>Laravel adalah framework PHP. Ia menyediakan routing, controller, middleware, validasi, migration, ORM Eloquent, templating Blade, dan banyak fasilitas lain agar aplikasi lebih terorganisasi.</p><div class="codebox">Browser Request
+    │
+    ▼
+Route (routes/web.php)
+    │
+    ▼
+Controller
+    │
+    ├── Model (Eloquent) ↔ Database
+    │
+    ▼
+View (Blade)
+    │
+    ▼
+HTML Response</div><h3>Prasyarat sebelum mulai</h3><ul><li>Dasar PHP: variabel, array, function, OOP dasar, Composer.</li><li>Dasar SQL: SELECT, INSERT, UPDATE, DELETE, relasi tabel.</li><li>Terminal dasar dan pemahaman request/response web.</li><li>PHP, Composer, dan database yang sesuai dengan versi Laravel yang digunakan.</li></ul><h3>Contoh alur kerja Laravel</h3><div class="codebox">php artisan make:model Mahasiswa -m
+php artisan make:controller MahasiswaController
+php artisan migrate
+php artisan serve</div><div class="callout">Periksa versi Laravel dan persyaratan PHP di dokumentasi resmi sebelum instalasi. Contoh lama dari Laravel 5.x tidak selalu kompatibel dengan Laravel modern. Jangan mencampur tutorial lintas versi tanpa memeriksa perubahan API dan struktur proyek.</div><p>Dokumentasi: <a href="https://laravel.com/docs" target="_blank" rel="noopener"><b>Laravel Docs ↗</b></a> · <a href="https://www.php.net/manual/en/" target="_blank" rel="noopener"><b>PHP Manual ↗</b></a> · <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener"><b>MySQL Docs ↗</b></a></p><label class="check-row"><input type="checkbox" data-progress="laravel-1" data-group="start"> Saya memahami alur route, controller, model, dan view.</label></section>
+<div class="panel"><div class="panel-head"><h2>Roadmap progress</h2><span class="muted" data-progress-count="start">0/7</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="start"></div></div><p class="muted">Progress tersimpan di browser ini menggunakan localStorage. Data tidak tersinkron antarperangkat.</p><a class="button button-dark" href="quiz.html">Lanjut ke evaluasi <span>→</span></a></div>
+</div></div></main><footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer></body></html>
