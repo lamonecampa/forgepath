@@ -12,11 +12,14 @@ After enabling GitHub Pages:
 
 ## Learning structure
 
-1. **Start Here** — web architecture, HTML, CSS, programming logic, PHP, MySQL, and Laravel foundations.
-2. **PHP Lab** — code editor and lightweight structural checks. PHP execution requires a local PHP interpreter/server.
-3. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
-4. **Knowledge Check** — 12 auto-graded questions with explanations.
-5. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+1. **Start Here** — web architecture, HTML, CSS, and programming logic.
+2. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
+3. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
+4. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
+5. **PHP Lab** — code editor and lightweight structural checks. PHP execution requires a local PHP interpreter/server.
+6. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
+7. **Knowledge Check** — 12 auto-graded questions with explanations.
+8. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
 
 ## Technology
 
@@ -69,6 +72,9 @@ Learning and project checklists use localStorage. Progress stays in the current 
 .
 ├── index.html
 ├── start.html
+├── php-course.html
+├── mysql-course.html
+├── laravel-course.html
 ├── php-lab.html
 ├── sql-lab.html
 ├── quiz.html
