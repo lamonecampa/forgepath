@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: './',
-  assetsInclude: [/\\.dat$/, /\\.so$/, /\\.la$/],
+  assetsInclude: [/\.dat$/, /\.so$/, /\.la$/],
   optimizeDeps: {
     exclude: ['@php-wasm/web']
   },
