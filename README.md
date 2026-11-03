@@ -13,16 +13,21 @@ After enabling GitHub Pages:
 ## Learning structure
 
 1. **Start Here** — web architecture, HTML, CSS, and programming logic.
-2. **HTML Course** — 16 modules from document structure and core elements to forms, semantics, multimedia, a personal website project, and Netlify deployment.
-3. **Python Course** — 14 modules covering Linux/Windows setup, syntax, data types, input/output, operators, control flow, collections, functions, lambda, `*args`, and `**kwargs`.
-4. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
-5. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
-6. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
-7. **PHP Playground** — runs PHP 8.4 in the browser using the official PHP.wasm runtime. The runtime assets are built by GitHub Actions and committed under `assets/php-runtime/`.
-8. **PHP Lab** — lightweight structural checks and additional PHP exercises.
-9. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
-10. **Knowledge Check** — 12 auto-graded questions with explanations.
-11. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+2. **HTML Course** — 16 modules covering document structure, forms, semantics, multimedia, and a website project.
+3. **Python Course** — 14 modules covering setup, syntax, data types, control flow, collections, functions, lambda, and arguments.
+4. **C Course** — 20 modules from compiler setup and fundamentals to arrays, functions, structs, pointers, dynamic memory, files, macros, and headers.
+5. **C# Course** — 9 modules covering .NET setup on Windows/Linux, VS Code, syntax, console I/O, variables, data types, and operators.
+6. **C++ Course** — 15 modules from setup and syntax to arrays, functions, enums, structs, unions, and pointers.
+7. **JavaScript Course** — 15 modules from language basics to arrays, objects, DOM, Math, Fetch/AJAX, and events.
+8. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP. Petani Kode references are included as further reading.
+9. **Git & GitHub Course** — 13 modules covering installation, commits, history, diffs, revert/reset, branches, remotes, pull requests, VS Code, and tags.
+10. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
+11. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
+12. **PHP Playground** — runs PHP 8.4 in the browser using the PHP.wasm runtime. Runtime assets are built by GitHub Actions.
+13. **PHP Lab** — lightweight structural checks and additional PHP exercises.
+14. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly), not a MySQL server.
+15. **Knowledge Check** — 12 auto-graded questions with explanations.
+16. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
 
 ## Technology
 
