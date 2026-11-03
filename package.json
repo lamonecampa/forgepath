@@ -6,14 +6,17 @@
   "scripts": {
     "build:php": "vite build --config vite.php.config.js",
     "copy:clang": "clang-wasm-copy-assets assets/clang",
-    "build:clang": "npm run copy:clang && vite build --config vite.clang.config.js"
+    "build:clang": "npm run copy:clang && vite build --config vite.clang.config.js",
+    "build:csharp": "vite build --config vite.csharp.config.js"
   },
   "dependencies": {
     "@php-wasm/universal": "3.1.60",
     "@php-wasm/web": "3.1.60",
-    "@live-codes/clang-wasm": "0.3.0"
+    "@live-codes/clang-wasm": "0.3.0",
+    "@wasmsharp/core": "0.10.2"
   },
   "devDependencies": {
-    "vite": "8.3.5"
+    "vite": "7.3.1",
+    "@wasmsharp/vite-plugin": "0.10.0"
   }
 }
