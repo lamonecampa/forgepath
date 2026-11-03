@@ -36,9 +36,11 @@ ORDER BY m.nama;</textarea><div class="sql-controls"><button class="small-btn" d
   document.getElementById('clearSql').addEventListener('click',()=>{editor.value='';editor.focus();});
   editor.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();run();}});
   document.querySelectorAll('[data-query]').forEach(button=>button.addEventListener('click',()=>{editor.value=button.dataset.query;editor.focus();}));
-  if(typeof initSqlJs!=='function'){status.textContent='Library gagal dimuat';out.textContent='Tidak dapat memuat sql.js. Periksa koneksi internet atau CDN.';return;}
-  initSqlJs({locateFile:file=>'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/'+file})
-    .then(lib=>{SQL=lib;seed();status.textContent='● SQLITE WASM READY';out.textContent='Database siap. Jalankan query pertama.';})
-    .catch(error=>{status.textContent='Library gagal dimuat';out.textContent='SQL engine gagal dimuat: '+error.message;});
+  window.addEventListener('load',()=>{
+    if(typeof initSqlJs!=='function'){status.textContent='Library gagal dimuat';out.textContent='Tidak dapat memuat sql.js. Periksa koneksi internet atau CDN.';return;}
+    initSqlJs({locateFile:file=>'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/'+file})
+      .then(lib=>{SQL=lib;seed();status.textContent='● SQLITE WASM READY';out.textContent='Database siap. Jalankan query pertama.';})
+      .catch(error=>{status.textContent='Library gagal dimuat';out.textContent='SQL engine gagal dimuat: '+error.message;});
+  });
 })();
 </script></body></html>
