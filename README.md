@@ -81,7 +81,7 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── index.html
 ├── start.html
 ├── html-course.html
-├── python-course.html\n├── python-playground.html\n├── assets/python-playground.js\n├── assets/python-worker.js
+├── python-course.html\n├── python-playground.html\n├── assets/python-playground.js\n├── assets/python-worker.js\n├── python-playground.html\n├── assets/python-playground.js\n├── assets/python-worker.js
 ├── c-course.html
 ├── csharp-course.html
 ├── cpp-course.html
