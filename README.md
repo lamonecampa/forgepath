@@ -1,6 +1,6 @@
 # ForgePath
 
-**A beginner-first learning portal for HTML, CSS, JavaScript, Python, PHP, MySQL, and Laravel.**
+**A beginner-first learning portal for C, C++, C#, HTML, JavaScript, Python, PHP, Git/GitHub, MySQL, and Laravel.**
 
 ForgePath is a standalone static website designed to guide new learners from web fundamentals to a working CRUD application.
 
@@ -77,6 +77,11 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── start.html
 ├── html-course.html
 ├── python-course.html
+├── c-course.html
+├── csharp-course.html
+├── cpp-course.html
+├── javascript-course.html
+├── git-course.html
 ├── php-course.html
 ├── mysql-course.html
 ├── laravel-course.html
