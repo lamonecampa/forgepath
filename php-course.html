@@ -1,0 +1,212 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Kursus PHP dari nol: sintaks, variabel, tipe data, kontrol alur, fungsi, array, form, database, keamanan, debugging, dan OOP."><title>Kursus PHP Lengkap — ForgePath</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/app.js"></script></head><body>
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a href="start.html">Start here</a><a class="active" href="php-course.html">PHP Course</a><a href="mysql-course.html">MySQL</a><a href="laravel-course.html">Laravel</a><a href="projects.html">Projects</a></nav><a class="nav-cta" href="php-lab.html">Buka PHP Lab ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header>
+<main class="wrap"><section class="page-hero"><div class="eyebrow">COURSE 01 / SERVER-SIDE PROGRAMMING</div><h1>PHP dari dasar<br>hingga aplikasi.</h1><p>Kursus bertahap untuk memahami PHP modern. Pelajari sintaks, logika, fungsi, array, form, database, keamanan, debugging, dan OOP sebelum berpindah ke Laravel.</p><div class="tag-row"><span>PHP 8.x</span><span>Beginner → Intermediate</span><span>15 modul</span></div></section>
+<div class="content-layout"><aside class="sidebar"><p class="sidebar-label">PHP CURRICULUM</p><a href="#p01">01 · Pengenalan PHP</a><a href="#p02">02 · Variabel</a><a href="#p03">03 · Tipe data</a><a href="#p04">04 · Operator</a><a href="#p05">05 · Percabangan</a><a href="#p06">06 · Switch</a><a href="#p07">07 · Perulangan</a><a href="#p08">08 · Fungsi & scope</a><a href="#p09">09 · Array</a><a href="#p10">10 · Built-in functions</a><a href="#p11">11 · Form & validasi</a><a href="#p12">12 · Database & bulk insert</a><a href="#p13">13 · Session, cookie, login</a><a href="#p14">14 · Error & debugging</a><a href="#p15">15 · OOP</a><p class="sidebar-label" style="margin-top:20px">PRACTICE</p><a href="php-lab.html">PHP Lab ↗</a><a href="quiz.html">Knowledge Check ↗</a></aside><div class="lessons">
+<section class="lesson" id="p01"><div class="eyebrow">MODULE 01 / OVERVIEW</div><h2>Mengenal PHP dan perannya di web</h2><p>PHP adalah bahasa pemrograman server-side yang dirancang kuat untuk pengembangan web. Kode PHP diproses di server, bukan dikirim sebagai kode mentah untuk dieksekusi browser. Hasil pemrosesan biasanya berupa HTML, JSON, atau respons lain yang diterima client.</p><p>Bayangkan sebuah halaman katalog. HTML membentuk struktur kartu produk, CSS mengatur tampilannya, JavaScript menangani interaksi di browser, sedangkan PHP mengambil data produk dan menentukan konten yang dikirim ke browser.</p><div class="codebox"><span class="comment">// halo.php</span>
+&lt;?php
+$nama = "ForgePath";
+echo "&lt;h1&gt;Selamat belajar, " . htmlspecialchars($nama) . "!&lt;/h1&gt;";
+?&gt;</div><h3>Alur request sederhana</h3><ol><li>Browser mengirim HTTP request ke server.</li><li>Web server meneruskan file PHP ke interpreter.</li><li>PHP menjalankan logika dan dapat membaca database.</li><li>Server mengirim response yang sudah diproses ke browser.</li></ol><p>Jalankan dengan PHP CLI: <code>php -S localhost:8000</code>, lalu buka <code>http://localhost:8000/halo.php</code>. PHP bukan pengganti HTML atau JavaScript. Ketiganya mengerjakan bagian berbeda.</p><div class="callout">Gunakan versi PHP yang masih mendapat dukungan keamanan dan sesuai kebutuhan framework/hosting. Periksa <a href="https://www.php.net/supported-versions.php" target="_blank" rel="noopener">jadwal dukungan versi PHP</a>, jangan memilih versi hanya karena tutorial memakai versi tersebut.</div><label class="check-row"><input type="checkbox" data-progress="php-course-1" data-group="phpcourse"> Saya dapat menjelaskan perbedaan PHP, HTML, CSS, dan JavaScript.</label></section>
+<section class="lesson" id="p02"><div class="eyebrow">MODULE 02 / VARIABLES</div><h2>Variabel dan konstanta</h2><p>Variabel memberi nama pada suatu nilai agar dapat digunakan kembali atau diperbarui. Nama variabel PHP diawali tanda dolar (<code>$</code>), diikuti huruf atau garis bawah, lalu dapat memuat angka. Nama bersifat case-sensitive: <code>$nama</code> dan <code>$Nama</code> adalah dua variabel berbeda.</p><div class="codebox">&lt;?php
+$nama = "Alya";
+$umur = 20;
+$aktif = true;
+
+$umur = $umur + 1;
+const NAMA_APLIKASI = "KampusApp";
+
+echo $nama . " berusia " . $umur;
+?&gt;</div><p>Gunakan nama yang menjelaskan maksud, misalnya <code>$totalBelanja</code>, bukan <code>$x</code>. Untuk nilai yang tidak boleh berubah selama eksekusi, gunakan konstanta. PHP juga menyediakan <code>define()</code>, tetapi deklarasi <code>const</code> sering lebih mudah dibaca untuk konstanta sederhana.</p><h3>Interpolasi dan penggabungan</h3><div class="codebox">$nama = "Alya";
+echo "Halo, $nama";        // interpolasi string double quote
+echo 'Halo, ' . $nama;     // operator concatenation</div><label class="check-row"><input type="checkbox" data-progress="php-course-2" data-group="phpcourse"> Saya dapat membuat, mengubah, dan menampilkan variabel.</label></section>
+<section class="lesson" id="p03"><div class="eyebrow">MODULE 03 / DATA TYPES</div><h2>Tipe data dasar dan konversi</h2><p>PHP menentukan tipe nilai secara dinamis, tetapi tipe tetap memengaruhi operasi dan hasil. Empat tipe dasar yang sering ditemui adalah string, integer, float, dan boolean. Ada pula <code>null</code>, array, object, resource, dan tipe lainnya.</p><div class="codebox">$judul = "Pemrograman PHP"; // string
+$jumlah = 12;               // integer
+$harga = 12500.50;          // float
+$tersedia = true;           // boolean
+$catatan = null;            // null
+
+var_dump($jumlah, $harga, $tersedia);</div><ul><li><b>String</b>: teks, misalnya nama dan alamat email.</li><li><b>Integer</b>: bilangan bulat, misalnya jumlah barang.</li><li><b>Float</b>: bilangan pecahan. Hindari float untuk perhitungan uang yang harus presisi; simpan nominal sebagai integer dalam satuan terkecil atau gunakan pendekatan decimal yang sesuai.</li><li><b>Boolean</b>: <code>true</code> atau <code>false</code>, lazim untuk status dan hasil kondisi.</li></ul><p>PHP dapat melakukan konversi tipe otomatis (type juggling). Konversi ini praktis, tetapi bisa menimbulkan hasil tak terduga. Validasi dan konversi input secara eksplisit, misalnya <code>$umur = filter_input(INPUT_POST, 'umur', FILTER_VALIDATE_INT)</code>.</p><div class="callout">Jangan menyamakan string angka dengan integer tanpa memeriksa konteks. Gunakan perbandingan identik <code>===</code> ketika tipe dan nilai sama-sama harus cocok.</div><label class="check-row"><input type="checkbox" data-progress="php-course-3" data-group="phpcourse"> Saya bisa membedakan string, integer, float, boolean, dan null.</label></section>
+<section class="lesson" id="p04"><div class="eyebrow">MODULE 04 / OPERATORS</div><h2>Operator aritmatika, perbandingan, dan logika</h2><p>Operator melakukan perhitungan atau membentuk ekspresi kondisi. Operator aritmatika meliputi <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, dan <code>**</code>. Operator penugasan seperti <code>+=</code> mempersingkat pembaruan nilai.</p><div class="codebox">$subtotal = 150000;
+$diskon = 0.10;
+$total = $subtotal - ($subtotal * $diskon);
+
+$jumlah = 7;
+$sisa = $jumlah % 2; // 1</div><p>Operator perbandingan menghasilkan boolean: <code>===</code>, <code>!==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, dan <code>&lt;=</code>. Operator logika menggabungkan kondisi: <code>&amp;&amp;</code> (dan), <code>||</code> (atau), serta <code>!</code> (negasi).</p><div class="codebox">$umur = 21;
+$punyaKartu = true;
+
+if ($umur >= 17 && $punyaKartu) {
+    echo "Syarat terpenuhi";
+}</div><p>Biasakan memakai <code>===</code> dan <code>!==</code> untuk menghindari perbandingan longgar yang melakukan konversi tipe. Waspadai pula perbedaan prioritas operator <code>and/or</code> dibanding <code>&amp;&amp;/||</code>; gunakan bentuk simbolik dan tanda kurung agar maksud ekspresi jelas.</p><label class="check-row"><input type="checkbox" data-progress="php-course-4" data-group="phpcourse"> Saya dapat menyusun ekspresi hitung dan kondisi majemuk.</label></section>
+<section class="lesson" id="p05"><div class="eyebrow">MODULE 05 / CONDITIONS</div><h2>Percabangan if, elseif, dan else</h2><p>Percabangan memilih instruksi berdasarkan kondisi. PHP mengevaluasi kondisi dari atas ke bawah. Blok pertama yang bernilai benar akan dijalankan, sedangkan <code>else</code> menjadi jalur cadangan.</p><div class="codebox">$nilai = 82;
+
+if ($nilai >= 85) {
+    $predikat = "A";
+} elseif ($nilai >= 75) {
+    $predikat = "B";
+} elseif ($nilai >= 60) {
+    $predikat = "C";
+} else {
+    $predikat = "Perlu perbaikan";
+}
+
+echo $predikat;</div><p>Urutan kondisi penting. Letakkan kondisi yang lebih spesifik atau ambang tertinggi terlebih dahulu. Jika kondisi umum ditempatkan di awal, kondisi setelahnya bisa tidak pernah tercapai.</p><h3>Validasi input</h3><div class="codebox">$stok = 0;
+if ($stok > 0) {
+    echo "Produk tersedia";
+} else {
+    echo "Stok habis";
+}</div><label class="check-row"><input type="checkbox" data-progress="php-course-5" data-group="phpcourse"> Saya dapat membuat percabangan bertingkat dengan urutan logis.</label></section>
+<section class="lesson" id="p06"><div class="eyebrow">MODULE 06 / SWITCH</div><h2>Switch untuk pilihan berbasis nilai</h2><p>Gunakan <code>switch</code> ketika satu ekspresi dibandingkan dengan beberapa nilai tetap. Struktur ini dapat lebih mudah dibaca daripada rangkaian <code>elseif</code> panjang. Akhiri setiap case dengan <code>break</code> bila tidak ingin eksekusi berlanjut ke case berikutnya.</p><div class="codebox">$menu = "laporan";
+
+switch ($menu) {
+    case "beranda":
+        echo "Halaman utama";
+        break;
+    case "laporan":
+        echo "Halaman laporan";
+        break;
+    case "pengaturan":
+        echo "Halaman pengaturan";
+        break;
+    default:
+        echo "Halaman tidak ditemukan";
+}</div><p>Untuk kondisi berupa rentang nilai, perbandingan kompleks, atau aturan yang tidak sekadar mencocokkan nilai, <code>if/elseif</code> biasanya lebih tepat. PHP modern juga memiliki <code>match</code> expression, yang berbeda dari switch karena menghasilkan nilai dan menggunakan perbandingan identik.</p><label class="check-row"><input type="checkbox" data-progress="php-course-6" data-group="phpcourse"> Saya memahami kapan menggunakan switch dan if/elseif.</label></section>
+<section class="lesson" id="p07"><div class="eyebrow">MODULE 07 / LOOPS</div><h2>Perulangan for, while, dan foreach</h2><p>Loop menjalankan blok instruksi berkali-kali. <code>for</code> cocok saat jumlah iterasi dapat ditentukan, <code>while</code> saat pengulangan bergantung pada kondisi, dan <code>foreach</code> untuk menelusuri elemen array atau iterable.</p><div class="codebox"><span class="comment">// for: sepuluh iterasi</span>
+for ($i = 1; $i <= 5; $i++) {
+    echo $i . PHP_EOL;
+}
+
+<span class="comment">// while: selama syarat terpenuhi</span>
+$stok = 3;
+while ($stok > 0) {
+    echo "Sisa: $stok" . PHP_EOL;
+    $stok--;
+}
+
+<span class="comment">// foreach: membaca array</span>
+$buah = ["Apel", "Jeruk", "Mangga"];
+foreach ($buah as $item) {
+    echo $item . PHP_EOL;
+}</div><p><code>break</code> menghentikan loop, sedangkan <code>continue</code> melewati sisa instruksi pada iterasi saat ini. Pastikan kondisi loop dapat berubah; jika tidak, program berisiko masuk infinite loop.</p><label class="check-row"><input type="checkbox" data-progress="php-course-7" data-group="phpcourse"> Saya dapat memilih jenis loop dan menghindari infinite loop.</label></section>
+<section class="lesson" id="p08"><div class="eyebrow">MODULE 08 / FUNCTIONS</div><h2>Fungsi, parameter, return value, dan scope</h2><p>Fungsi membungkus pekerjaan tertentu agar dapat dipanggil berulang. Parameter menjadi masukan, sedangkan <code>return</code> mengirim hasil kembali ke pemanggil. Fungsi yang baik memiliki satu tanggung jawab yang jelas.</p><div class="codebox">function hitungDiskon(float $harga, float $persen): float {
+    return $harga * ($persen / 100);
+}
+
+$potongan = hitungDiskon(200000, 15);
+echo $potongan; // 30000</div><p>Variabel yang dibuat di dalam fungsi umumnya memiliki local scope. Variabel di luar fungsi tidak otomatis tersedia di dalamnya. Kirim data melalui parameter, bukan bergantung pada global state. Kata kunci <code>global</code> tersedia tetapi penggunaannya berlebihan membuat fungsi sulit diuji. Variabel <code>static</code> lokal mempertahankan nilainya di antara pemanggilan fungsi.</p><div class="codebox">function penghitung(): int {
+    static $jumlah = 0;
+    $jumlah++;
+    return $jumlah;
+}
+
+echo penghitung(); // 1
+echo penghitung(); // 2</div><p>Kenali juga type declaration, nullable type, default parameter, named arguments, dan anonymous function setelah konsep dasar dikuasai.</p><label class="check-row"><input type="checkbox" data-progress="php-course-8" data-group="phpcourse"> Saya dapat membuat fungsi dengan parameter, tipe, dan return value.</label></section>
+<section class="lesson" id="p09"><div class="eyebrow">MODULE 09 / ARRAYS</div><h2>Array indexed, associative, dan multidimensi</h2><p>Array menyimpan banyak nilai dalam satu variabel. Indexed array memakai indeks numerik, associative array memakai key bernama, dan multidimensional array menyimpan array di dalam array.</p><div class="codebox">$warna = ["merah", "hijau", "biru"];
+echo $warna[0];
+
+$mahasiswa = [
+    "nama" => "Rani",
+    "nim" => "24001",
+    "prodi" => "Teknik Elektro"
+];
+echo $mahasiswa["nama"];
+
+$data = [
+    ["nama" => "Rani", "nilai" => 88],
+    ["nama" => "Dito", "nilai" => 91]
+];
+foreach ($data as $baris) {
+    echo $baris["nama"] . ": " . $baris["nilai"];
+}</div><p>Fungsi array yang sering dipakai antara lain <code>count()</code>, <code>array_push()</code>, <code>array_pop()</code>, <code>array_merge()</code>, <code>array_filter()</code>, <code>array_map()</code>, dan <code>array_reduce()</code>. Perhatikan apakah fungsi mengubah array asal atau menghasilkan array baru.</p><label class="check-row"><input type="checkbox" data-progress="php-course-9" data-group="phpcourse"> Saya dapat membaca dan mengolah array bertingkat.</label></section>
+<section class="lesson" id="p10"><div class="eyebrow">MODULE 10 / BUILT-IN FUNCTIONS</div><h2>Fungsi bawaan PHP</h2><p>PHP menyediakan fungsi untuk pekerjaan umum sehingga tidak perlu menulis semuanya dari nol. Kelompok penting: manipulasi string, angka, array, tanggal/waktu, file, dan validasi.</p><div class="codebox">$teks = "  Belajar PHP  ";
+echo trim($teks);
+echo strlen($teks);
+echo strtoupper($teks);
+
+$angka = [8, 3, 9, 1];
+sort($angka);
+echo count($angka);
+
+$tanggal = new DateTimeImmutable("now");
+echo $tanggal->format("Y-m-d");</div><p>Contoh lain: <code>str_replace()</code>, <code>explode()</code>, <code>implode()</code>, <code>number_format()</code>, <code>in_array()</code>, <code>array_key_exists()</code>, <code>file_get_contents()</code>, dan <code>filter_var()</code>. Jangan mengandalkan ingatan semata; cari fungsi di manual resmi dan periksa parameter serta nilai baliknya.</p><p><a href="https://www.php.net/manual/en/funcref.php" target="_blank" rel="noopener"><b>PHP Function Reference ↗</b></a></p><label class="check-row"><input type="checkbox" data-progress="php-course-10" data-group="phpcourse"> Saya dapat memilih fungsi built-in sesuai kebutuhan.</label></section>
+<section class="lesson" id="p11"><div class="eyebrow">MODULE 11 / FORMS & VALIDATION</div><h2>Form HTML, request, dan validasi</h2><p>Form mengirim data ke server melalui metode HTTP. <code>GET</code> lazim untuk pencarian atau filter yang dapat dibagikan melalui URL. <code>POST</code> lazim untuk pengiriman yang mengubah keadaan, seperti pendaftaran. POST bukan enkripsi; gunakan HTTPS untuk melindungi data saat transit.</p><div class="codebox">&lt;form method="post"&gt;
+  &lt;label&gt;Email
+    &lt;input type="email" name="email" required&gt;
+  &lt;/label&gt;
+  &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;?php
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($email === false || $email === null) {
+        $pesan = "Alamat email tidak valid";
+    } else {
+        $pesan = "Data diterima";
+    }
+}
+?&gt;</div><p>Validasi dilakukan di server meskipun browser memiliki atribut <code>required</code> atau <code>type=email</code>, sebab validasi client dapat dilewati. Validasi memeriksa aturan data; escaping dilakukan saat output sesuai konteks. Untuk menampilkan input sebagai HTML, gunakan <code>htmlspecialchars($nilai, ENT_QUOTES, 'UTF-8')</code>.</p><p>Untuk form yang mengubah data, tambahkan perlindungan CSRF menggunakan token. Batasi ukuran input dan validasi setiap field dengan aturan yang sesuai kebutuhan.</p><label class="check-row"><input type="checkbox" data-progress="php-course-11" data-group="phpcourse"> Saya dapat menerima, memvalidasi, dan menampilkan input dengan aman.</label></section>
+<section class="lesson" id="p12"><div class="eyebrow">MODULE 12 / DATABASE OPERATIONS</div><h2>Koneksi database dan multiple insert</h2><p>PHP dapat berkomunikasi dengan MySQL menggunakan PDO atau MySQLi. Untuk materi ini gunakan PDO agar pola prepared statement konsisten dan lebih mudah dipindahkan ke beberapa jenis database.</p><div class="codebox">$pdo = new PDO(
+    'mysql:host=localhost;dbname=sekolah;charset=utf8mb4',
+    'app_user',
+    'password',
+    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+);
+
+$stmt = $pdo->prepare(
+    'INSERT INTO mahasiswa (nama, email) VALUES (:nama, :email)'
+);
+$stmt->execute([
+    'nama' => 'Rani',
+    'email' => 'rani@example.com'
+]);</div><p>Jangan menyisipkan input langsung ke dalam string SQL. Prepared statement memisahkan query dari nilai yang dikirim sehingga membantu mencegah SQL injection. Untuk banyak baris, gunakan transaksi dan prepared statement berulang, atau multi-row insert dengan placeholder yang jumlahnya sesuai input.</p><div class="codebox">$pdo->beginTransaction();
+try {
+    $stmt = $pdo->prepare(
+        'INSERT INTO mahasiswa (nama, email) VALUES (?, ?)'
+    );
+    foreach ($daftar as $mhs) {
+        $stmt->execute([$mhs['nama'], $mhs['email']]);
+    }
+    $pdo->commit();
+} catch (Throwable $e) {
+    $pdo->rollBack();
+    throw $e;
+}</div><p>Transaksi menjaga konsistensi: bila salah satu operasi gagal, perubahan dalam transaksi dapat dibatalkan. Pelajari desain tabel dan SQL di <a href="mysql-course.html"><b>kursus MySQL</b></a>.</p><label class="check-row"><input type="checkbox" data-progress="php-course-12" data-group="phpcourse"> Saya dapat memakai PDO prepared statement dan transaksi.</label></section>
+<section class="lesson" id="p13"><div class="eyebrow">MODULE 13 / STATE & AUTH</div><h2>Session, cookie, dan autentikasi</h2><p>HTTP bersifat stateless: server tidak otomatis mengingat request sebelumnya. Session menyimpan state di server dan biasanya menghubungkannya dengan ID session di cookie browser. Cookie sendiri disimpan di browser dan dapat dimodifikasi pengguna, jadi jangan jadikan isinya sebagai sumber kebenaran untuk harga, saldo, atau hak akses.</p><div class="codebox">session_start();
+
+$_SESSION['user_id'] = 42;
+$_SESSION['role'] = 'admin';
+
+// Setelah login berhasil:
+session_regenerate_id(true);
+
+// Saat logout:
+$_SESSION = [];
+session_destroy();</div><p>Untuk autentikasi, simpan hash password dengan <code>password_hash()</code>, verifikasi dengan <code>password_verify()</code>, gunakan prepared statement, regenerasi session ID setelah login, dan batasi akses setiap halaman di sisi server. Jangan pernah menyimpan password mentah atau mengirim kredensial melalui HTTP tanpa TLS.</p><p>Shopping cart dapat memakai session untuk menyimpan daftar ID produk dan kuantitas. Harga dan total harus dihitung ulang dari database server, bukan dipercaya dari cookie atau request client.</p><div class="callout">Contoh login klasik berbasis MySQLi dapat berguna untuk memahami alur, tetapi untuk proyek baru gunakan praktik modern: prepared statements, password hashing, CSRF protection, session hardening, dan pesan error yang tidak membocorkan detail internal.</div><label class="check-row"><input type="checkbox" data-progress="php-course-13" data-group="phpcourse"> Saya memahami session, cookie, password hashing, dan kontrol akses.</label></section>
+<section class="lesson" id="p14"><div class="eyebrow">MODULE 14 / DEBUGGING</div><h2>Menangani error dan debugging</h2><p>Pesan error adalah petunjuk, bukan musuh. Parse error biasanya menunjukkan kesalahan sintaks, warning menunjukkan masalah saat eksekusi yang tidak selalu menghentikan program, sedangkan fatal error menghentikan proses. Jenis dan level pesan dapat berbeda menurut versi PHP.</p><div class="codebox">error_reporting(E_ALL);
+ini_set('display_errors', '1'); // hanya lingkungan development
+
+$data = ['nama' => 'Rani', 'nilai' => 90];
+var_dump($data);
+print_r($data);
+
+<span class="comment">// Periksa sintaks dari terminal</span>
+php -l index.php</div><p>Gunakan <code>var_dump()</code> untuk melihat nilai beserta tipe, dan <code>print_r()</code> untuk struktur array/object yang lebih ringkas. Periksa stack trace, file, nomor baris, serta nilai variabel di sekitar titik gagal.</p><p>Di production, jangan menampilkan detail error kepada pengunjung. Matikan <code>display_errors</code>, aktifkan pencatatan ke log, lindungi file log, dan tampilkan pesan umum yang tidak membocorkan query, path server, token, atau kredensial.</p><label class="check-row"><input type="checkbox" data-progress="php-course-14" data-group="phpcourse"> Saya dapat membaca error dan melakukan debugging secara sistematis.</label></section>
+<section class="lesson" id="p15"><div class="eyebrow">MODULE 15 / OBJECT-ORIENTED PHP</div><h2>OOP: class, object, dan empat pilar</h2><p>Object-oriented programming mengelompokkan data (property) dan perilaku (method) ke dalam class. Class menjadi rancangan, sedangkan object adalah instance yang dibuat dari rancangan tersebut.</p><div class="codebox">class Produk {
+    public function __construct(
+        public string $nama,
+        private int $harga
+    ) {}
+
+    public function harga(): int {
+        return $this->harga;
+    }
+
+    public function ringkasan(): string {
+        return $this->nama . ' - Rp' . $this->harga();
+    }
+}
+
+$produk = new Produk('Keyboard', 250000);
+echo $produk->ringkasan();</div><ul><li><b>Encapsulation</b>: membatasi akses ke detail internal melalui visibility dan method.</li><li><b>Inheritance</b>: class turunan mewarisi atau memperluas perilaku class dasar.</li><li><b>Polymorphism</b>: objek berbeda dapat digunakan melalui kontrak/interface yang sama.</li><li><b>Abstraction</b>: menampilkan kontrak penting tanpa mengekspos seluruh detail implementasi.</li></ul><p>Materi lanjutan: interface, abstract class, trait, namespace, autoloading Composer, dependency injection, dan testing. Jangan memaksakan OOP pada program kecil yang lebih jelas ditulis secara prosedural; gunakan saat struktur dan tanggung jawab mulai berkembang.</p><div class="callout">Prasyarat Laravel: pahami fungsi, array, class/object, visibility, namespace, Composer, HTTP request, serta SQL dasar. Setelah itu lanjutkan ke <a href="laravel-course.html"><b>kursus Laravel</b></a>.</div><label class="check-row"><input type="checkbox" data-progress="php-course-15" data-group="phpcourse"> Saya dapat membuat class, object, property, method, dan menjelaskan pilar OOP.</label></section>
+<div class="panel"><div class="panel-head"><h2>Progress kursus PHP</h2><span class="muted" data-progress-count="phpcourse">0/15</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="phpcourse"></div></div><p class="muted">Checklist disimpan di localStorage browser ini, bukan akun cloud.</p><div class="action-row"><a class="button button-dark" href="php-lab.html">Latihan di PHP Lab →</a><a class="button" style="border:1px solid var(--line)" href="mysql-course.html">Lanjut MySQL →</a></div></div>
+</div></div></main><footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer></body></html>
