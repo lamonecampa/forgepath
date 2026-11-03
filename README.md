@@ -13,7 +13,8 @@ After enabling GitHub Pages:
 ## Learning structure
 
 1. **Start Here** — web architecture, HTML, CSS, and programming logic.
-2. **HTML Course** — 16 modules from document structure and core elements to forms, semantics, multimedia, a personal website project, and Netlify deployment.\n3. **Python Course** — 14 modules covering Linux/Windows setup, syntax, data types, input/output, operators, control flow, collections, functions, lambda, `*args`, and `**kwargs`.
+2. **HTML Course** — 16 modules from document structure and core elements to forms, semantics, multimedia, a personal website project, and Netlify deployment.
+3. **Python Course** — 14 modules covering Linux/Windows setup, syntax, data types, input/output, operators, control flow, collections, functions, lambda, `*args`, and `**kwargs`.
 4. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
 5. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
 6. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
