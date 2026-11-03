@@ -16,8 +16,8 @@
     output.textContent='Menjalankan preview…'; status.textContent='Running';
     const css=editors.css.value.replace(/<\/style/gi,'<\\/style');
     const js=editors.js.value.replace(/<\/script/gi,'<\\/script');
-    const bridge='<script>(()=>{const runId='+id+';const send=(type,args)=>parent.postMessage({forgepathPlayground:true,runId,type,args},"*");["log","info","warn","error","debug"].forEach(level=>{const original=console[level].bind(console);console[level]=(...args)=>{original(...args);send(level,args.map(value=>{try{return typeof value==="string"?value:JSON.stringify(value)}catch{return String(value)}}))}});addEventListener("error",event=>send("error",[event.message+" ("+event.lineno+":"+event.colno+")"]));addEventListener("unhandledrejection",event=>send("error",[String(event.reason)]))})();<\\/script>';
-    const doc='<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+css+'</style></head><body>'+editors.html.value+bridge+'<script>try{\\n'+js+'\\n}catch(error){console.error(error.stack||error.message)}<\\/script></body></html>';
+    const bridge='<script>(()=>{const runId='+id+';const send=(type,args)=>parent.postMessage({forgepathPlayground:true,runId,type,args},"*");["log","info","warn","error","debug"].forEach(level=>{const original=console[level].bind(console);console[level]=(...args)=>{original(...args);send(level,args.map(value=>{try{return typeof value==="string"?value:JSON.stringify(value)}catch{return String(value)}}))}});addEventListener("error",event=>send("error",[event.message+" ("+event.lineno+":"+event.colno+")"]));addEventListener("unhandledrejection",event=>send("error",[String(event.reason)]))})();<\/script>';
+    const doc='<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+css+'</style></head><body>'+editors.html.value+bridge+'<script>try{\n'+js+'\n}catch(error){console.error(error.stack||error.message)}<\/script></body></html>';
     frame.srcdoc=doc; status.textContent='Preview diperbarui';
   };
   window.addEventListener('message',event=>{
