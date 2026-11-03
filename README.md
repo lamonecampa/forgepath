@@ -2,85 +2,108 @@
 
 **A beginner-first learning portal for C, C++, C#, HTML, JavaScript, Python, PHP, Git/GitHub, MySQL, and Laravel.**
 
-ForgePath is a standalone static website designed to guide new learners from web fundamentals to a working CRUD application.
+ForgePath is a static learning portal with structured courses, browser-based programming labs, quizzes, and project exercises.
 
-## Live site
+## Site
 
-After enabling GitHub Pages:
+- GitHub repository: https://github.com/lamonecampa/forgepath
+- GitHub Pages: https://lamonecampa.github.io/forgepath/ (available after Pages is enabled and deployment succeeds)
 
-- https://lamonecampa.github.io/forgepath/
+## Learning tracks
 
-## Learning structure
+| Track | Modules | Focus |
+|---|---:|---|
+| HTML | 16 | Document structure, forms, semantics, multimedia, website project |
+| Python | 14 | Setup, syntax, types, control flow, collections, functions |
+| C | 20 | Procedural programming, pointers, memory, files, macros |
+| C# | 9 | .NET setup, syntax, console I/O, variables, types, operators |
+| C++ | 15 | Modern C++, control flow, functions, arrays, structs, pointers |
+| JavaScript | 15 | Language basics, arrays, objects, DOM, Fetch, events |
+| PHP | 15 | Syntax, data types, validation, database access, debugging, OOP |
+| Git & GitHub | 13 | Commits, history, diffs, reset/revert, branches, remotes, PRs |
+| MySQL | 10 | Relational modeling, queries, joins, transactions, indexing, security |
+| Laravel | 9 | Project setup, routing, MVC, CRUD, authentication, testing, deployment |
 
-1. **Start Here** — web architecture, HTML, CSS, and programming logic.
-2. **HTML Course** — 16 modules covering document structure, forms, semantics, multimedia, and a website project.
-3. **Python Course** — 14 modules covering setup, syntax, data types, control flow, collections, functions, lambda, and arguments.
-4. **Python Playground** — runs Python 3 in the browser with Pyodide/WebAssembly; no local interpreter required.
-5. **C/C++ Playground** — compiles C and C++ with Clang/WebAssembly and runs the resulting WASI program in a browser worker.
-6. **C# Playground** — compiles and runs C# with Roslyn and .NET WebAssembly through WasmSharp.
-6. **C Course** — 20 modules from compiler setup and fundamentals to arrays, functions, structs, pointers, dynamic memory, files, macros, and headers.
-7. **C# Course** — 9 modules covering .NET setup on Windows/Linux, VS Code, syntax, console I/O, variables, data types, and operators.
-8. **C++ Course** — 15 modules from setup and syntax to arrays, functions, enums, structs, unions, and pointers.
-9. **JavaScript Course** — 15 modules from language basics to arrays, objects, DOM, Math, Fetch/AJAX, and events.
-10. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP. Petani Kode references are included as further reading.
-11. **Git & GitHub Course** — 13 modules covering installation, commits, history, diffs, revert/reset, branches, remotes, pull requests, VS Code, and tags.
-12. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
-13. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
-14. **PHP Playground** — runs PHP 8.4 in the browser using the PHP.wasm runtime. Runtime assets are built by GitHub Actions.
-15. **PHP Lab** — lightweight structural checks and additional PHP exercises.
-16. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly), not a MySQL server.
-17. **Knowledge Check** — 12 auto-graded questions with explanations.
-18. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+**Total: 10 learning tracks and 136 course modules.**
+
+## Browser labs
+
+- **Web Playground** — HTML, CSS, and JavaScript live preview in a sandboxed iframe.
+- **Python Playground** — CPython in the browser through Pyodide/WebAssembly.
+- **C/C++ Playground** — Clang compiles C and C++ to WASI/WebAssembly; the resulting program runs in a browser worker.
+- **C# Playground** — Roslyn and .NET WebAssembly through WasmSharp.
+- **PHP Playground** — PHP 8.4 through the WordPress Playground PHP.wasm runtime.
+- **SQL Lab** — SQLite query practice through sql.js. It is not a MySQL server.
+- **PHP Lab** — editing and heuristic exercises only; it does not execute PHP.
+- **Knowledge Check** — 12 auto-graded questions with explanations.
+- **Project Path** — four incremental projects with completion checklist and evaluation rubric.
 
 ## Technology
 
 - HTML, CSS, vanilla JavaScript
-- Pyodide 0.29.3 for Python WebAssembly
-- @live-codes/clang-wasm 0.3.0 for C/C++ compiler WebAssembly
-- WasmSharp 0.10.2 + Roslyn/.NET WebAssembly for C#
-- sql.js 1.10.3 from CDN for browser-based SQLite exercises
-- Google Fonts (DM Sans, DM Mono, Manrope)
-- Browser localStorage for progress
+- Pyodide 0.29.3
+- `@live-codes/clang-wasm` 0.3.0
+- WasmSharp 0.10.2 and `@wasmsharp/vite-plugin` 0.10.0
+- WordPress Playground PHP.wasm 3.1.60
+- sql.js 1.10.3
+- Browser localStorage for learning progress
 
-No build step or package manager is required.
+## Build and deploy
 
-## Run locally
+The repository uses GitHub Actions to build and commit the PHP, C/C++, and C# WebAssembly assets. The first download of a compiler/runtime can be large. C/C++ Clang assets are approximately 29 MB compressed; the browser may need substantially more memory while the compiler is active. Python and PHP runtimes are also loaded on demand.
 
-Open `index.html` in a browser, or serve the folder with any static HTTP server:
+Workflow: `.github/workflows/build-php-runtime.yml`
+
+To run the build locally, use Node.js 22 or newer:
 
 ```bash
+npm install
+npm run build:php
+npm run build:clang
+npm run build:csharp
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Then open `http://localhost:8000`. Browser workers and WebAssembly should be tested over HTTPS or localhost, not by opening HTML files with `file://`.
 
-## Enable GitHub Pages
+Enable GitHub Pages:
 
 1. Open repository **Settings → Pages**.
 2. Under **Build and deployment**, select **Deploy from a branch**.
 3. Select branch `main` and folder `/(root)`.
-4. Save and wait for the deployment to finish.
+4. Save and wait for the Pages deployment to finish.
 
-## Important technical boundaries
+## Technical boundaries
 
-### PHP Lab
-The PHP editor does not execute PHP in the browser. It offers editing, copying, and basic heuristic checks only. Run actual code using PHP CLI, XAMPP, Laragon, or another PHP web server. For syntax validation, use:
+### C and C++
 
-```bash
-php -l filename.php
-```
+The playground compiles to WASI/WebAssembly, not a native Windows or Linux executable. System calls, networking, threads, filesystem access, and some libraries differ from desktop toolchains. The first toolchain download is substantial. A successful WASI run does not guarantee identical behavior on another operating system.
 
-### SQL Lab
-SQL Lab uses SQLite through sql.js, not a MySQL server. Core SQL practice such as SELECT, WHERE, GROUP BY, and JOIN is useful, but dialect-specific syntax, data types, functions, constraints, and DDL may differ. Test final applications against the target MySQL version.
+### C#
 
-### Laravel versions
-Always check the official Laravel documentation for the version used by the project: https://laravel.com/docs. Older Laravel tutorials are not automatically compatible with current releases. Verify PHP and Composer requirements before installation.
+WasmSharp runs Roslyn and .NET WebAssembly in the browser. It is not a full replacement for Visual Studio or a desktop .NET SDK. Browser runtime support, assemblies, OS APIs, threading, and filesystem behavior have limitations. See the upstream WasmSharp documentation for the tested feature surface.
+
+### Python
+
+Pyodide runs CPython through WebAssembly. Many standard and scientific packages work, but packages requiring native extensions must be built for Pyodide. Desktop OS access and arbitrary networking are not equivalent.
+
+### PHP
+
+The PHP Playground executes PHP 8.4 in WebAssembly. It is not a persistent PHP server and does not provide a real MySQL service or a full Laravel server environment. The separate PHP Lab is a heuristic editor, not a PHP interpreter.
+
+### SQL
+
+SQL Lab uses SQLite through sql.js, not MySQL. Core SQL practice is useful, but dialect-specific syntax, data types, functions, constraints, and DDL may differ. Test final applications against the target MySQL version.
+
+### Laravel
+
+Always check the official Laravel documentation for the version used by the project: https://laravel.com/docs. Older tutorials are not automatically compatible with current releases. Verify PHP and Composer requirements before installation.
 
 ## Progress and privacy
 
-Learning and project checklists use localStorage. Progress stays in the current browser profile and is not synchronized to a server or other devices. Clearing browser storage removes it.
+Learning and project checklists use browser localStorage. Progress stays in the current browser profile and is not synchronized to a server or other devices. Clearing browser storage removes it. Browser compiler labs execute locally; runtime assets are downloaded from the configured static hosting origin or CDN.
 
-## Structure
+## Repository structure
 
 ```
 .
@@ -89,18 +112,6 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── html-course.html
 ├── python-course.html
 ├── python-playground.html
-├── c-cpp-playground.html
-├── csharp-playground.html
-├── src/clang-worker.js
-├── src/csharp-playground.js
-├── vite.clang.config.js
-├── vite.csharp.config.js
-├── c-cpp-playground.html
-├── assets/python-playground.js
-├── assets/python-worker.js
-├── assets/c-cpp-playground.js
-├── assets/clang-worker.js
-├── vite.clang.config.js\n├── python-playground.html\n├── assets/python-playground.js\n├── assets/python-worker.js\n├── python-playground.html\n├── assets/python-playground.js\n├── assets/python-worker.js\n├── python-playground.html\n├── assets/python-playground.js\n├── assets/python-worker.js
 ├── c-course.html
 ├── csharp-course.html
 ├── cpp-course.html
@@ -109,27 +120,31 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── php-course.html
 ├── mysql-course.html
 ├── laravel-course.html
+├── c-cpp-playground.html
+├── csharp-playground.html
 ├── php-playground.html
+├── playground.html
 ├── php-lab.html
-├── src/
-│   └── php-playground.js
-├── package.json
-├── vite.php.config.js
-├── .github/workflows/build-php-runtime.yml
 ├── sql-lab.html
 ├── quiz.html
 ├── projects.html
+├── src/
+│   ├── clang-worker.js
+│   └── csharp-playground.js
 ├── assets/
 │   ├── style.css
 │   ├── app.js
-│   └── php-runtime/ (generated PHP.wasm assets)
-└── README.md
+│   ├── python-playground.js
+│   ├── python-worker.js
+│   ├── c-cpp-playground.js
+│   └── generated runtime assets/
+├── package.json
+├── vite.php.config.js
+├── vite.clang.config.js
+├── vite.csharp.config.js
+└── .github/workflows/build-php-runtime.yml
 ```
 
 ## License
 
 Educational use. Add a license if you intend to distribute or relicense the project.
-
-## PHP WebAssembly build
-
-The `Build PHP WebAssembly runtime` workflow runs on pushes to `main`, installs pinned dependencies, bundles the official WordPress Playground PHP.wasm runtime for PHP 8.4, and commits generated files to `assets/php-runtime/`. The workflow ignores commits containing only generated runtime files to avoid a build loop.
