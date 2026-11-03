@@ -76,17 +76,27 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── php-course.html
 ├── mysql-course.html
 ├── laravel-course.html
+├── php-playground.html
 ├── php-lab.html
+├── src/
+│   └── php-playground.js
+├── package.json
+├── vite.php.config.js
+├── .github/workflows/build-php-runtime.yml
 ├── sql-lab.html
 ├── quiz.html
 ├── projects.html
 ├── assets/
 │   ├── style.css
-│   └── app.js
+│   ├── app.js
+│   └── php-runtime/ (generated PHP.wasm assets)
 └── README.md
 ```
 
 ## License
 
 Educational use. Add a license if you intend to distribute or relicense the project.
-\n## PHP WebAssembly build\n\nThe `Build PHP WebAssembly runtime` workflow runs on pushes to `main`, installs pinned dependencies, bundles the official WordPress Playground PHP.wasm runtime for PHP 8.4, and commits generated files to `assets/php-runtime/`. The workflow ignores commits containing only generated runtime files to avoid a build loop.\n
+
+## PHP WebAssembly build
+
+The `Build PHP WebAssembly runtime` workflow runs on pushes to `main`, installs pinned dependencies, bundles the official WordPress Playground PHP.wasm runtime for PHP 8.4, and commits generated files to `assets/php-runtime/`. The workflow ignores commits containing only generated runtime files to avoid a build loop.
