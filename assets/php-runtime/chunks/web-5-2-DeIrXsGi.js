@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./php_5_2-BcmqkBq2.js","./events-CYj-jSKJ.js","./rolldown-runtime-WkwZ5CU-.js","./php_5_2-CGrTmOds.js"])))=>i.map(i=>d[i]);
+import{n as e,t}from"../php-runtime.js";async function n(){return await t()?await e(()=>import(`./php_5_2-BcmqkBq2.js`),__vite__mapDeps([0,1,2]),import.meta.url):await e(()=>import(`./php_5_2-CGrTmOds.js`),__vite__mapDeps([3,1,2]),import.meta.url)}export{n as getPHPLoaderModule};
