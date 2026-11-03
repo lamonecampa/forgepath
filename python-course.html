@@ -43,10 +43,10 @@ py hello.py
 
 # Buat virtual environment
 py -m venv .venv
-.venv\\Scripts\\Activate.ps1
+.venv\Scripts\Activate.ps1
 
 # Perbarui pip di environment aktif
-python -m pip install --upgrade pip</div><p>Jika PowerShell menolak aktivasi script, jangan asal mengubah execution policy secara global. Baca pesan error dan dokumentasi Microsoft/Python, atau gunakan Command Prompt dengan <code>.venv\\Scripts\\activate.bat</code>. Editor seperti VS Code perlu diarahkan ke interpreter dari virtual environment proyek.</p><p><a href="https://www.petanikode.com/python-windows/" target="_blank" rel="noopener">Referensi Petani Kode: Python di Windows ↗</a> · <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Unduh Python resmi ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m2" data-group="python-course"> Saya dapat memasang Python 3 dan menjalankan file .py di Windows.</label></section>
+python -m pip install --upgrade pip</div><p>Jika PowerShell menolak aktivasi script, jangan asal mengubah execution policy secara global. Baca pesan error dan dokumentasi Microsoft/Python, atau gunakan Command Prompt dengan <code>.venv\Scripts\activate.bat</code>. Editor seperti VS Code perlu diarahkan ke interpreter dari virtual environment proyek.</p><p><a href="https://www.petanikode.com/python-windows/" target="_blank" rel="noopener">Referensi Petani Kode: Python di Windows ↗</a> · <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Unduh Python resmi ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m2" data-group="python-course"> Saya dapat memasang Python 3 dan menjalankan file .py di Windows.</label></section>
 <section class="lesson" id="m3"><div class="eyebrow">03 / LANGUAGE BASICS</div><h2>Sintaks dasar Python</h2><p>Python menggunakan indentasi untuk menandai blok kode. Konsistensi indentasi wajib. Nama bersifat case-sensitive, statement umumnya ditulis satu per baris, dan komentar satu baris dimulai dengan <code>#</code>.</p><div class="codebox"># Program pertama
 nama = "ForgePath"
 
@@ -198,7 +198,7 @@ ringkasan(
 angka = [10, 20, 30]
 print(*angka)
 
-opsi = {"sep": " | ", "end": "\\n"}
+opsi = {"sep": " | ", "end": "\n"}
 print("A", "B", **opsi)</div><p>Jangan memakai <code>*args</code>/<code>**kwargs</code> otomatis pada semua fungsi. Parameter eksplisit biasanya lebih mudah dibaca dan divalidasi. Gunakan bentuk variadik saat memang diperlukan fleksibilitas API.</p><p><a href="https://www.petanikode.com/python-args-kwargs/" target="_blank" rel="noopener">Referensi Petani Kode: *args dan **kwargs ↗</a> · <a href="https://docs.python.org/id/3/tutorial/controlflow.html#arbitrary-argument-lists" target="_blank" rel="noopener">Dokumentasi argumen fungsi ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m14" data-group="python-course"> Saya memahami *args, **kwargs, dan unpacking argumen.</label></section>
 <div class="panel"><div class="panel-head"><h2>Python course progress</h2><span class="muted" data-progress-count="python-course">0/14</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="python-course"></div></div><p class="muted">Progress tersimpan di browser ini menggunakan localStorage. Tidak tersinkron ke perangkat lain. Selesaikan latihan terminal di komputer sendiri; Web Playground ForgePath saat ini bukan interpreter Python.</p></div>
 <div class="note-strip"><span class="note-icon">i</span><div><b>Catatan versi dan sumber</b><p>Kursus ini disusun ulang dengan contoh Python 3 modern berdasarkan urutan topik Petani Kode. Sejumlah tutorial lama dapat memuat contoh Python 2 seperti print tanpa tanda kurung atau raw_input(); contoh di ForgePath menggunakan Python 3. Baca dokumentasi resmi untuk detail versi, pustaka, dan perilaku terbaru. Referensi Petani Kode adalah bacaan pendamping, bukan pengganti dokumentasi resmi.</p></div></div>
