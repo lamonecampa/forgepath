@@ -76,6 +76,7 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── index.html
 ├── start.html
 ├── html-course.html
+├── python-course.html
 ├── php-course.html
 ├── mysql-course.html
 ├── laravel-course.html
