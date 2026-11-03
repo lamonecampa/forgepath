@@ -1,0 +1,70 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kursus MySQL — ForgePath</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/app.js"></script></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a href="php-course.html">PHP</a><a class="active" href="mysql-course.html">MySQL</a><a href="laravel-course.html">Laravel</a><a href="projects.html">Projects</a></nav><a class="nav-cta" href="sql-lab.html">Buka SQL Lab ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header><main class="wrap"><section class="page-hero"><div class="eyebrow">COURSE 02 / RELATIONAL DATABASE</div><h1>MySQL dan desain<br>database relasional.</h1><p>Belajar dari konsep database, tabel, tipe data, relasi, query CRUD, JOIN, agregasi, indeks, keamanan, hingga integrasi PHP.</p><div class="tag-row"><span>MySQL 8.x</span><span>Beginner → Intermediate</span><span>10 modul</span></div></section><div class="content-layout"><aside class="sidebar"><p class="sidebar-label">MYSQL CURRICULUM</p><a href="#m01">01 · Konsep database</a><a href="#m02">02 · Relasi & ERD</a><a href="#m03">03 · Instalasi & SQL</a><a href="#m04">04 · Tabel & tipe data</a><a href="#m05">05 · CRUD</a><a href="#m06">06 · Filter & agregasi</a><a href="#m07">07 · JOIN</a><a href="#m08">08 · Integritas & indeks</a><a href="#m09">09 · PHP & MySQL</a><a href="#m10">10 · Keamanan & skala</a><a href="sql-lab.html">SQL Lab ↗</a></aside><div class="lessons">
+<section class="lesson" id="m01"><div class="eyebrow">MODULE 01 / DATABASE BASICS</div><h2>Memahami database relasional</h2><p>Database adalah sistem terorganisasi untuk menyimpan dan mengelola data. MySQL merupakan relational database management system (RDBMS): data disusun dalam tabel, dan hubungan antarentitas dinyatakan melalui key.</p><p>Contoh sistem akademik memiliki entitas mahasiswa, mata kuliah, dan nilai. Memisahkan entitas membantu mengurangi pengulangan data dan menjaga konsistensi. SQL (Structured Query Language) digunakan untuk mendefinisikan struktur dan mengolah data.</p><div class="codebox">Database: akademik
+├── mahasiswa
+├── mata_kuliah
+└── nilai
+    ├── mahasiswa_id → mahasiswa.id
+    └── mata_kuliah_id → mata_kuliah.id</div><label class="check-row"><input type="checkbox" data-progress="mysql-course-1" data-group="mysqlcourse"> Saya dapat menjelaskan fungsi RDBMS dan tabel.</label></section>
+<section class="lesson" id="m02"><div class="eyebrow">MODULE 02 / DATA MODELING</div><h2>Entitas, atribut, primary key, foreign key, dan ERD</h2><p>Mulai desain database dari kebutuhan, bukan dari tebakan nama kolom. Identifikasi entitas, atribut, hubungan, kardinalitas, dan aturan bisnis. Primary key membedakan setiap record; foreign key menghubungkan record ke tabel lain.</p><p>Relasi umum: one-to-one, one-to-many, dan many-to-many. Hubungan many-to-many biasanya membutuhkan tabel penghubung (junction table). Contoh mahasiswa mengambil banyak mata kuliah, dan satu mata kuliah diikuti banyak mahasiswa, sehingga dibuat tabel KRS.</p><div class="codebox">mahasiswa (1) ─── (N) krs (N) ─── (1) mata_kuliah
+</div><p>Normalisasi membantu mengurangi redundansi dan anomali insert/update/delete. Pahami minimal bentuk normal pertama sampai ketiga pada skema sederhana, tetapi tetap pertimbangkan kebutuhan query dan performa.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-2" data-group="mysqlcourse"> Saya dapat menggambar ERD sederhana dengan PK dan FK.</label></section>
+<section class="lesson" id="m03"><div class="eyebrow">MODULE 03 / SETUP & SQL</div><h2>Menyiapkan MySQL dan mengenal SQL</h2><p>Untuk belajar lokal, gunakan MySQL Community Server atau paket seperti XAMPP/Laragon. phpMyAdmin adalah antarmuka administrasi berbasis web, bukan mesin database itu sendiri. Buat database latihan terpisah dan gunakan akun dengan hak akses terbatas.</p><div class="codebox">CREATE DATABASE akademik
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE akademik;
+
+SELECT VERSION();</div><p>SQL memiliki kelompok perintah seperti DDL (CREATE/ALTER/DROP), DML (INSERT/UPDATE/DELETE), dan DQL (SELECT). Hak akses dan transaksi juga memiliki perintah khusus. Jalankan perintah pada database latihan terlebih dahulu.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-3" data-group="mysqlcourse"> Saya dapat membuat database dan memilihnya dengan USE.</label></section>
+<section class="lesson" id="m04"><div class="eyebrow">MODULE 04 / TABLE DESIGN</div><h2>Membuat tabel dan memilih tipe data</h2><p>Pilih tipe data sesuai makna dan rentang nilai. Contoh: INT untuk bilangan bulat, VARCHAR untuk teks dengan panjang terbatas, TEXT untuk teks panjang, DATE untuk tanggal, DATETIME untuk tanggal dan waktu, DECIMAL untuk nilai numerik presisi tetap seperti nominal uang.</p><div class="codebox">CREATE TABLE mahasiswa (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nim VARCHAR(20) NOT NULL UNIQUE,
+  nama VARCHAR(120) NOT NULL,
+  email VARCHAR(160) UNIQUE,
+  tanggal_lahir DATE NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</div><p>Gunakan constraint seperti NOT NULL, UNIQUE, DEFAULT, CHECK (sesuai versi), PRIMARY KEY, dan FOREIGN KEY untuk menjaga integritas di level database. Jangan menyimpan angka telepon sebagai integer karena nol di depan dan tanda + merupakan bagian dari representasi.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-4" data-group="mysqlcourse"> Saya dapat merancang tabel dengan tipe data dan constraint tepat.</label></section>
+<section class="lesson" id="m05"><div class="eyebrow">MODULE 05 / CRUD</div><h2>Operasi dasar: INSERT, SELECT, UPDATE, DELETE</h2><p>CRUD adalah siklus utama pengelolaan data. Biasakan menyebut kolom secara eksplisit saat INSERT dan selalu periksa kondisi WHERE sebelum UPDATE atau DELETE.</p><div class="codebox">INSERT INTO mahasiswa (nim, nama, email)
+VALUES ('24001', 'Rani Putri', 'rani@example.com');
+
+SELECT id, nim, nama
+FROM mahasiswa;
+
+UPDATE mahasiswa
+SET email = 'rani.p@example.com'
+WHERE nim = '24001';
+
+DELETE FROM mahasiswa
+WHERE nim = '24001';</div><div class="callout">UPDATE atau DELETE tanpa WHERE dapat memengaruhi seluruh baris tabel. Sebelum eksekusi, jalankan SELECT dengan kondisi yang sama untuk memastikan targetnya benar.</div><label class="check-row"><input type="checkbox" data-progress="mysql-course-5" data-group="mysqlcourse"> Saya dapat melakukan CRUD dan memeriksa dampak query.</label></section>
+<section class="lesson" id="m06"><div class="eyebrow">MODULE 06 / QUERYING</div><h2>Filter, pengurutan, agregasi, dan pagination</h2><p>Gunakan WHERE untuk menyaring baris, ORDER BY untuk mengurutkan, LIMIT untuk membatasi hasil, dan fungsi agregat untuk meringkas data. GROUP BY mengelompokkan baris, sedangkan HAVING menyaring hasil agregasi.</p><div class="codebox">SELECT jurusan, COUNT(*) AS jumlah
+FROM mahasiswa
+WHERE status = 'aktif'
+GROUP BY jurusan
+HAVING COUNT(*) >= 5
+ORDER BY jumlah DESC
+LIMIT 20;</div><p>Fungsi agregat yang umum: COUNT, SUM, AVG, MIN, MAX. Untuk pagination berbasis OFFSET, perhatikan biaya pada data sangat besar; strategi keyset pagination dapat lebih efisien untuk navigasi berurutan.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-6" data-group="mysqlcourse"> Saya dapat memakai WHERE, GROUP BY, HAVING, ORDER BY, dan LIMIT.</label></section>
+<section class="lesson" id="m07"><div class="eyebrow">MODULE 07 / JOINS</div><h2>Menggabungkan tabel dengan JOIN</h2><p>JOIN mengambil informasi yang tersebar pada tabel terkait. INNER JOIN hanya mengembalikan pasangan yang cocok; LEFT JOIN mempertahankan seluruh baris dari tabel kiri meskipun tidak memiliki pasangan di kanan.</p><div class="codebox">SELECT m.nim, m.nama, k.nama_mk, n.nilai
+FROM nilai AS n
+INNER JOIN mahasiswa AS m
+  ON m.id = n.mahasiswa_id
+INNER JOIN mata_kuliah AS k
+  ON k.id = n.mata_kuliah_id
+ORDER BY m.nama;</div><p>Gunakan alias agar query lebih ringkas, dan pastikan kondisi ON menghubungkan kolom yang benar. JOIN yang salah dapat menggandakan baris atau menghasilkan kombinasi yang tidak masuk akal.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-7" data-group="mysqlcourse"> Saya dapat menulis INNER JOIN dan LEFT JOIN.</label></section>
+<section class="lesson" id="m08"><div class="eyebrow">MODULE 08 / INTEGRITY & PERFORMANCE</div><h2>Relasi, transaksi, indeks, dan optimasi</h2><p>Foreign key menjaga agar referensi antar tabel tetap valid. Transaksi mengelompokkan beberapa operasi menjadi satu unit kerja. Sifat ACID mencakup atomicity, consistency, isolation, dan durability.</p><div class="codebox">START TRANSACTION;
+
+UPDATE rekening
+SET saldo = saldo - 50000
+WHERE id = 1;
+
+UPDATE rekening
+SET saldo = saldo + 50000
+WHERE id = 2;
+
+COMMIT;
+-- Gunakan ROLLBACK jika proses harus dibatalkan.</div><p>Indeks mempercepat pencarian dan join pada kolom yang tepat, tetapi menambah biaya penyimpanan dan operasi tulis. Gunakan EXPLAIN untuk membaca rencana eksekusi, lalu ukur sebelum menambah indeks. Hindari mengindeks semua kolom tanpa alasan.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-8" data-group="mysqlcourse"> Saya memahami foreign key, transaksi, dan trade-off indeks.</label></section>
+<section class="lesson" id="m09"><div class="eyebrow">MODULE 09 / PHP INTEGRATION</div><h2>Menghubungkan PHP dengan MySQL</h2><p>Gunakan PDO atau MySQLi dengan prepared statement. Kredensial database harus disimpan di konfigurasi lingkungan, bukan ditanam dalam repository publik. Akun aplikasi sebaiknya hanya memiliki hak yang diperlukan.</p><div class="codebox">$stmt = $pdo->prepare(
+  'SELECT id, nama FROM mahasiswa WHERE nim = :nim'
+);
+$stmt->execute(['nim' => $nim]);
+$mahasiswa = $stmt->fetch(PDO::FETCH_ASSOC);</div><p>Prepared statement melindungi parameter nilai dari injeksi SQL, tetapi nama tabel/kolom dinamis tetap perlu whitelist karena identifier tidak dapat diperlakukan seperti parameter nilai biasa. Escape output HTML secara terpisah dengan <code>htmlspecialchars()</code>.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-9" data-group="mysqlcourse"> Saya dapat mengambil data MySQL dari PHP dengan prepared statement.</label></section>
+<section class="lesson" id="m10"><div class="eyebrow">MODULE 10 / SECURITY & SCALE</div><h2>Keamanan, backup, dan data besar</h2><p>Keamanan database bukan hanya soal password. Batasi akses jaringan, gunakan akun terpisah, perbarui server, aktifkan backup teruji, audit hak akses, dan jangan menampilkan error SQL internal kepada pengguna.</p><ul><li>Gunakan parameterized query untuk input pengguna.</li><li>Jangan menyimpan password aplikasi dalam source control.</li><li>Gunakan TLS bila koneksi melintasi jaringan yang tidak dipercaya.</li><li>Backup harus diuji dengan proses restore, bukan sekadar melihat file dump.</li><li>Gunakan pagination dan pilih kolom yang dibutuhkan, hindari SELECT * pada query produksi yang tidak perlu.</li></ul><p>Untuk data besar, periksa query plan, indeks, ukuran result set, dan pola akses. Optimasi berbasis pengukuran, bukan asumsi.</p><label class="check-row"><input type="checkbox" data-progress="mysql-course-10" data-group="mysqlcourse"> Saya memahami dasar pengamanan dan pengelolaan database.</label></section>
+<div class="panel"><div class="panel-head"><h2>Progress kursus MySQL</h2><span class="muted" data-progress-count="mysqlcourse">0/10</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="mysqlcourse"></div></div><p class="muted">Selesaikan latihan di MySQL lokal. SQL Lab ForgePath memakai SQLite, bukan server MySQL.</p><div class="action-row"><a class="button button-dark" href="sql-lab.html">Latihan SQL Lab →</a><a class="button" style="border:1px solid var(--line)" href="laravel-course.html">Lanjut Laravel →</a></div></div>
+</div></div></main><footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer></body></html>
