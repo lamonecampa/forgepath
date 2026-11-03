@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Playground HTML, CSS, dan JavaScript dengan preview langsung di ForgePath.">
+<title>Web Playground — ForgePath</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/app.js"></script><script defer src="assets/playground.js"></script>
+<style>
+.playground-intro{padding:56px 0 28px}.playground-shell{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);gap:16px;padding:10px 0 72px}.play-panel{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;min-width:0}.play-head{padding:14px 17px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.play-head b{font:700 13px var(--display)}.editor-tabs{display:flex;gap:5px}.editor-tab{border:1px solid transparent;background:transparent;color:var(--muted);padding:7px 10px;border-radius:4px;font:11px var(--mono);cursor:pointer}.editor-tab.active{background:var(--green-light);color:var(--green);border-color:#d4e4d7}.editor-area{display:none;width:100%;height:420px;resize:vertical;border:0;outline:0;background:#1d2923;color:#e5eee7;padding:18px;font:12px/1.8 var(--mono);tab-size:2}.editor-area.active{display:block}.play-actions{padding:12px 15px;border-top:1px solid var(--line);display:flex;align-items:center;gap:8px;flex-wrap:wrap}.play-status{font:10px var(--mono);color:var(--muted);margin-left:auto}.preview-frame{width:100%;height:490px;border:0;background:#fff;display:block}.preview-label{font:10px var(--mono);letter-spacing:.7px;color:var(--muted)}.play-note{margin:0 0 45px}.play-note p{font-size:12px;color:var(--muted)}.play-note code{font-family:var(--mono)}@media(max-width:850px){.playground-shell{grid-template-columns:1fr}.editor-area{height:340px}.preview-frame{height:400px}}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a href="start.html">Start here</a><a href="php-course.html">PHP</a><a href="mysql-course.html">MySQL</a><a href="laravel-course.html">Laravel</a><a class="active" href="playground.html">Playground</a><a href="projects.html">Projects</a></nav><a class="nav-cta" href="start.html">Learning path ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header>
+<main class="wrap">
+<section class="page-hero playground-intro"><div class="eyebrow">INTERACTIVE LAB / 01</div><h1>Tulis kode.<br><em style="color:var(--green);font-style:normal">Lihat hasilnya.</em></h1><p>Playground untuk HTML, CSS, dan JavaScript. Ubah kode di editor, tekan Run, lalu lihat hasilnya di panel preview. Kode berjalan di iframe sandbox, terpisah dari halaman ForgePath.</p><div class="tag-row"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Live preview</span></div></section>
+<div class="playground-shell">
+<section class="play-panel"><div class="play-head"><b>Code editor</b><div class="editor-tabs" role="tablist" aria-label="Pilih editor"><button class="editor-tab active" data-tab="html" role="tab" aria-selected="true">HTML</button><button class="editor-tab" data-tab="css" role="tab" aria-selected="false">CSS</button><button class="editor-tab" data-tab="js" role="tab" aria-selected="false">JS</button></div></div>
+<textarea class="editor-area active" id="editor-html" spellcheck="false" aria-label="Editor HTML"><main class="card">
+  <p class="eyebrow">MY FIRST COMPONENT</p>
+  <h1>Halo, ForgePath!</h1>
+  <p>Ini hasil dari HTML, CSS, dan JavaScript yang kamu tulis sendiri.</p>
+  <button id="helloButton">Klik saya</button>
+  <p id="message" aria-live="polite">Belum ada aksi.</p>
+</main></textarea>
+<textarea class="editor-area" id="editor-css" spellcheck="false" aria-label="Editor CSS">* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 32px;
+  font-family: system-ui, sans-serif;
+  background: #f0f4ef;
+  color: #1c2921;
+}
+.card {
+  max-width: 520px;
+  margin: 24px auto;
+  padding: 28px;
+  border: 1px solid #d9e3d9;
+  border-radius: 12px;
+  background: white;
+}
+.eyebrow { color: #39765c; font-size: 11px; letter-spacing: 1px; }
+button {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 16px;
+  color: white;
+  background: #28583f;
+  cursor: pointer;
+}</textarea>
+<textarea class="editor-area" id="editor-js" spellcheck="false" aria-label="Editor JavaScript">const button = document.querySelector('#helloButton');
+const message = document.querySelector('#message');
+
+button.addEventListener('click', () => {
+  message.textContent = 'Berhasil! JavaScript berjalan.';
+  console.log('Tombol diklik.');
+});
+
+console.log('Playground siap dijalankan.');</textarea>
+<div class="play-actions"><button class="small-btn primary" id="run-code">▶ Run</button><button class="small-btn" id="reset-code">Reset contoh</button><button class="small-btn" id="copy-code">Salin tab aktif</button><span class="play-status" id="play-status" role="status">Siap</span></div></section>
+<section class="play-panel"><div class="play-head"><b>Live preview</b><span class="preview-label">SANDBOXED FRAME</span></div><iframe class="preview-frame" id="preview-frame" title="Hasil preview kode" sandbox="allow-scripts"></iframe><div class="play-actions"><span class="preview-label">OUTPUT / CONSOLE</span><button class="small-btn" id="clear-console">Bersihkan</button></div><pre class="output" id="play-console" aria-live="polite">Tekan Run untuk menjalankan contoh.</pre></section>
+</div>
+<section class="play-note"><div class="callout"><b>Batas eksekusi:</b> Playground ini menjalankan HTML, CSS, dan JavaScript di browser. Kode dipisahkan dalam iframe sandbox. Ini bukan server PHP, bukan Laravel runtime, dan bukan MySQL server. PHP dan Laravel memerlukan runtime/server PHP; SQL Lab yang tersedia menggunakan SQLite WASM dengan perbedaan dialek dari MySQL.</div><p>Catatan keamanan: jangan masukkan kredensial, token, atau data pribadi ke contoh kode. Preview tidak mengirim kode ke server ForgePath, tetapi kode yang kamu tulis tetap dapat memuat resource eksternal jika kamu menambahkannya sendiri.</p></section>
+</main>
+<footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer>
+</body></html>
