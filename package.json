@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "vite": "7.3.1",
-    "@wasmsharp/vite-plugin": "0.10.0"
+    "vite-plugin-ignore-dynamic-imports": "1.0.2"
   }
 }
