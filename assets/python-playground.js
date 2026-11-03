@@ -18,7 +18,7 @@
   if(data.type==='done'){setBusy(false);status.textContent='Selesai';}
   if(data.type==='error'){output.textContent+='\n'+data.message;setBusy(false);status.textContent='Terjadi kesalahan';}
  };worker.onerror=e=>{output.textContent='Worker gagal: '+e.message+'\nPeriksa dukungan WebAssembly, koneksi, dan Console browser.';setBusy(false);status.textContent='Worker error';};};
- const run=()=>{if(busy)return;setBusy(true);output.textContent='Menyiapkan runtime dan menjalankan kode…';status.textContent='Memuat runtime';start();worker.postMessage({type:'run',code:editor.value});};
+ const stop=()=>{if(worker){worker.terminate();worker=null;}setBusy(false);setStatus('Eksekusi dihentikan');output.textContent+='\n[Eksekusi dihentikan oleh pengguna]';};\n $('py-stop').addEventListener('click',stop);\n const run=()=>{if(busy)return;setBusy(true);output.textContent='Menyiapkan runtime dan menjalankan kode…';status.textContent='Memuat runtime';start();worker.postMessage({type:'run',code:editor.value});};
  $('py-run').addEventListener('click',run);
  $('py-reset').addEventListener('click',()=>{editor.value=initial;output.textContent='Editor dipulihkan ke contoh awal.';});
  $('py-clear').addEventListener('click',()=>output.textContent='');
