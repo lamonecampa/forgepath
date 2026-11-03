@@ -43,7 +43,7 @@ ForgePath is a static learning portal with structured courses, browser-based pro
 - HTML, CSS, vanilla JavaScript
 - Pyodide 0.29.3
 - `@live-codes/clang-wasm` 0.3.0
-- WasmSharp 0.10.2 and `@wasmsharp/vite-plugin` 0.10.0
+- WasmSharp 0.10.2 and `vite-plugin-ignore-dynamic-imports` 1.0.2
 - WordPress Playground PHP.wasm 3.1.60
 - sql.js 1.10.3
 - Browser localStorage for learning progress
