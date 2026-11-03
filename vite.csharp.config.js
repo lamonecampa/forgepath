@@ -1,8 +1,14 @@
 import { defineConfig } from 'vite';
-import wasmSharpPlugin from '@wasmsharp/vite-plugin';
+import ignoreDynamicImports from 'vite-plugin-ignore-dynamic-imports';
 export default defineConfig({
  base:'./',
- plugins:wasmSharpPlugin(),
+ plugins:[ignoreDynamicImports({include:['**/dotnet.runtime.js','**/dotnet.js']})],
+ assetsInclude:['**/*.dll','**/*.wasm','**/*.dat'],
+ optimizeDeps:{
+  exclude:['@wasmsharp/core'],
+  esbuildOptions:{loader:{'.dll':'file','.wasm':'file','.dat':'file'}}
+ },
+ worker:{format:'es'},
  build:{
   target:'esnext',
   outDir:'assets',
