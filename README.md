@@ -1,6 +1,6 @@
 # ForgePath
 
-**A beginner-first learning portal for HTML, CSS, JavaScript, PHP, MySQL, and Laravel.**
+**A beginner-first learning portal for HTML, CSS, JavaScript, Python, PHP, MySQL, and Laravel.**
 
 ForgePath is a standalone static website designed to guide new learners from web fundamentals to a working CRUD application.
 
@@ -13,15 +13,15 @@ After enabling GitHub Pages:
 ## Learning structure
 
 1. **Start Here** — web architecture, HTML, CSS, and programming logic.
-2. **HTML Course** — 16 modules from document structure and core elements to forms, semantics, multimedia, a personal website project, and Netlify deployment.
-3. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
-4. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
-5. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
-6. **PHP Playground** — runs PHP 8.4 in the browser using the official PHP.wasm runtime. The runtime assets are built by GitHub Actions and committed under `assets/php-runtime/`.
-7. **PHP Lab** — lightweight structural checks and additional PHP exercises.
-8. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
-9. **Knowledge Check** — 12 auto-graded questions with explanations.
-10. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+2. **HTML Course** — 16 modules from document structure and core elements to forms, semantics, multimedia, a personal website project, and Netlify deployment.\n3. **Python Course** — 14 modules covering Linux/Windows setup, syntax, data types, input/output, operators, control flow, collections, functions, lambda, `*args`, and `**kwargs`.
+4. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
+5. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
+6. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
+7. **PHP Playground** — runs PHP 8.4 in the browser using the official PHP.wasm runtime. The runtime assets are built by GitHub Actions and committed under `assets/php-runtime/`.
+8. **PHP Lab** — lightweight structural checks and additional PHP exercises.
+9. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
+10. **Knowledge Check** — 12 auto-graded questions with explanations.
+11. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
 
 ## Technology
 
