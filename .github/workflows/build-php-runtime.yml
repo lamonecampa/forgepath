@@ -1,4 +1,4 @@
-name: Build PHP WebAssembly runtime
+name: Build ForgePath browser runtimes
 
 on:
   push:
