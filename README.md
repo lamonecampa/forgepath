@@ -16,23 +16,28 @@ After enabling GitHub Pages:
 2. **HTML Course** — 16 modules covering document structure, forms, semantics, multimedia, and a website project.
 3. **Python Course** — 14 modules covering setup, syntax, data types, control flow, collections, functions, lambda, and arguments.
 4. **Python Playground** — runs Python 3 in the browser with Pyodide/WebAssembly; no local interpreter required.
-5. **C Course** — 20 modules from compiler setup and fundamentals to arrays, functions, structs, pointers, dynamic memory, files, macros, and headers.
-6. **C# Course** — 9 modules covering .NET setup on Windows/Linux, VS Code, syntax, console I/O, variables, data types, and operators.
-7. **C++ Course** — 15 modules from setup and syntax to arrays, functions, enums, structs, unions, and pointers.
-8. **JavaScript Course** — 15 modules from language basics to arrays, objects, DOM, Math, Fetch/AJAX, and events.
-9. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP. Petani Kode references are included as further reading.
-10. **Git & GitHub Course** — 13 modules covering installation, commits, history, diffs, revert/reset, branches, remotes, pull requests, VS Code, and tags.
-11. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
-12. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
-13. **PHP Playground** — runs PHP 8.4 in the browser using the PHP.wasm runtime. Runtime assets are built by GitHub Actions.
-14. **PHP Lab** — lightweight structural checks and additional PHP exercises.
-15. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly), not a MySQL server.
-16. **Knowledge Check** — 12 auto-graded questions with explanations.
-17. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+5. **C/C++ Playground** — compiles C and C++ with Clang/WebAssembly and runs the resulting WASI program in a browser worker.
+6. **C# Playground** — compiles and runs C# with Roslyn and .NET WebAssembly through WasmSharp.
+6. **C Course** — 20 modules from compiler setup and fundamentals to arrays, functions, structs, pointers, dynamic memory, files, macros, and headers.
+7. **C# Course** — 9 modules covering .NET setup on Windows/Linux, VS Code, syntax, console I/O, variables, data types, and operators.
+8. **C++ Course** — 15 modules from setup and syntax to arrays, functions, enums, structs, unions, and pointers.
+9. **JavaScript Course** — 15 modules from language basics to arrays, objects, DOM, Math, Fetch/AJAX, and events.
+10. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP. Petani Kode references are included as further reading.
+11. **Git & GitHub Course** — 13 modules covering installation, commits, history, diffs, revert/reset, branches, remotes, pull requests, VS Code, and tags.
+12. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
+13. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
+14. **PHP Playground** — runs PHP 8.4 in the browser using the PHP.wasm runtime. Runtime assets are built by GitHub Actions.
+15. **PHP Lab** — lightweight structural checks and additional PHP exercises.
+16. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly), not a MySQL server.
+17. **Knowledge Check** — 12 auto-graded questions with explanations.
+18. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
 
 ## Technology
 
 - HTML, CSS, vanilla JavaScript
+- Pyodide 0.29.3 for Python WebAssembly
+- @live-codes/clang-wasm 0.3.0 for C/C++ compiler WebAssembly
+- WasmSharp 0.10.2 + Roslyn/.NET WebAssembly for C#
 - sql.js 1.10.3 from CDN for browser-based SQLite exercises
 - Google Fonts (DM Sans, DM Mono, Manrope)
 - Browser localStorage for progress
@@ -84,6 +89,12 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ├── html-course.html
 ├── python-course.html
 ├── python-playground.html
+├── c-cpp-playground.html
+├── csharp-playground.html
+├── src/clang-worker.js
+├── src/csharp-playground.js
+├── vite.clang.config.js
+├── vite.csharp.config.js
 ├── c-cpp-playground.html
 ├── assets/python-playground.js
 ├── assets/python-worker.js
