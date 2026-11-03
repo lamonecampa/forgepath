@@ -14,7 +14,8 @@ After enabling GitHub Pages:
 
 1. **Start Here** — web architecture, HTML, CSS, and programming logic.
 2. **HTML Course** — 16 modules covering document structure, forms, semantics, multimedia, and a website project.
-3. **Python Course** — 14 modules covering setup, syntax, data types, control flow, collections, functions, lambda, and arguments.\n4. **Python Playground** — runs Python 3 in the browser with Pyodide/WebAssembly; no local interpreter required.
+3. **Python Course** — 14 modules covering setup, syntax, data types, control flow, collections, functions, lambda, and arguments.
+4. **Python Playground** — runs Python 3 in the browser with Pyodide/WebAssembly; no local interpreter required.
 5. **C Course** — 20 modules from compiler setup and fundamentals to arrays, functions, structs, pointers, dynamic memory, files, macros, and headers.
 6. **C# Course** — 9 modules covering .NET setup on Windows/Linux, VS Code, syntax, console I/O, variables, data types, and operators.
 7. **C++ Course** — 15 modules from setup and syntax to arrays, functions, enums, structs, unions, and pointers.
