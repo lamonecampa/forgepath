@@ -4,11 +4,11 @@ self.onmessage=async({data})=>{
  try{
   if(!runtimePromise){
    self.postMessage({type:'loading',message:'Mengunduh runtime Pyodide…'});
-   importScripts('https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js');
+   importScripts('https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js');
    runtimePromise=loadPyodide({stdout:text=>self.postMessage({type:'stdout',text}),stderr:text=>self.postMessage({type:'stdout',text})});
   }
   py=py||await runtimePromise;
-  self.postMessage({type:'ready',version:'Python '+py.runPython('import sys; sys.version.split()[0]')+' · Pyodide 0.29.3'});
+  self.postMessage({type:'ready',version:'Python '+py.runPython('import sys; sys.version.split()[0]')+' · Pyodide 0.29.5'});
   if(data.code.includes('import numpy')||data.code.includes('from numpy')){
    self.postMessage({type:'loading',message:'Memuat paket NumPy…'});
    await py.loadPackage('numpy');
