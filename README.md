@@ -16,10 +16,10 @@ After enabling GitHub Pages:
 2. **PHP Course** — 15 modules from syntax and data types to validation, database access, debugging, and OOP.
 3. **MySQL Course** — 10 modules from relational modeling to joins, transactions, indexing, and security.
 4. **Laravel Course** — 9 modules from project setup to CRUD, authentication, testing, and deployment.
-5. **PHP Lab** — code editor and lightweight structural checks. PHP execution requires a local PHP interpreter/server.
-6. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
-7. **Knowledge Check** — 12 auto-graded questions with explanations.
-8. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
+5. **PHP Playground** — runs PHP 8.4 in the browser using the official PHP.wasm runtime. The runtime assets are built by GitHub Actions and committed under `assets/php-runtime/`.\n6. **PHP Lab** — lightweight structural checks and additional PHP exercises.
+7. **SQL Lab** — in-browser query practice powered by sql.js (SQLite/WebAssembly) with a sample relational database.
+8. **Knowledge Check** — 12 auto-graded questions with explanations.
+9. **Project Path** — four incremental projects, completion checklist, and evaluation rubric.
 
 ## Technology
 
@@ -88,3 +88,4 @@ Learning and project checklists use localStorage. Progress stays in the current 
 ## License
 
 Educational use. Add a license if you intend to distribute or relicense the project.
+\n## PHP WebAssembly build\n\nThe `Build PHP WebAssembly runtime` workflow runs on pushes to `main`, installs pinned dependencies, bundles the official WordPress Playground PHP.wasm runtime for PHP 8.4, and commits generated files to `assets/php-runtime/`. The workflow ignores commits containing only generated runtime files to avoid a build loop.\n
