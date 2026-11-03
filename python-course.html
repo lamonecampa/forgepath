@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Kursus Python dasar ForgePath: instalasi Linux dan Windows, sintaks, tipe data, kontrol alur, struktur data, fungsi, lambda, args dan kwargs.">
+<meta name="theme-color" content="#f7f8f5"><title>Python Course — ForgePath</title>
+<link rel="stylesheet" href="assets/style.css"><script defer src="assets/app.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a href="start.html">Start here</a><a href="html-course.html">HTML</a><a href="python-course.html" class="active">Python Course</a><a href="php-course.html">PHP</a><a href="mysql-course.html">MySQL</a><a href="laravel-course.html">Laravel</a><a href="playground.html">Web Playground</a></nav><a class="nav-cta" href="#m3">Mulai Python ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header>
+<main class="wrap">
+<section class="page-hero"><div class="eyebrow">PROGRAMMING FOUNDATION / PYTHON 01–14</div><h1>Python dari nol.</h1><p>Mulai dari menyiapkan interpreter di Linux atau Windows, memahami sintaks dan tipe data, lalu membangun logika dengan percabangan, perulangan, struktur data, dan fungsi.</p><div class="tag-row"><span>14 modul</span><span>Python 3</span><span>Beginner</span><span>Practice first</span></div></section>
+<div class="content-layout">
+<aside class="sidebar"><p class="sidebar-label">PYTHON LEARNING PATH</p>
+<a href="#m1">01 · Setup Linux</a><a href="#m2">02 · Setup Windows</a><a href="#m3">03 · Sintaks Python</a><a href="#m4">04 · Variabel & tipe data</a><a href="#m5">05 · Input & output</a><a href="#m6">06 · Operator</a><a href="#m7">07 · Percabangan</a><a href="#m8">08 · Perulangan</a><a href="#m9">09 · List</a><a href="#m10">10 · Tuple</a><a href="#m11">11 · Dictionary</a><a href="#m12">12 · Fungsi</a><a href="#m13">13 · Lambda</a><a href="#m14">14 · *args & **kwargs</a>
+<p class="sidebar-label" style="margin-top:25px">REFERENSI</p><a href="https://docs.python.org/id/3/tutorial/" target="_blank" rel="noopener">Python Docs ↗</a><a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 ↗</a></aside>
+<div class="lessons">
+<section class="lesson" id="m1"><div class="eyebrow">01 / ENVIRONMENT · LINUX</div><h2>Menyiapkan Python di Linux</h2><p>Di banyak distribusi Linux, Python 3 sudah tersedia karena dipakai oleh sistem dan aplikasi. Periksa terlebih dahulu, jangan langsung mengganti atau menghapus Python bawaan OS.</p><div class="codebox"># Periksa versi Python 3
+python3 --version
+
+# Debian / Ubuntu: instal interpreter dan pip
+sudo apt update
+sudo apt install python3 python3-pip python3-venv
+
+# Jalankan interpreter interaktif
+python3
+
+# Jalankan file
+python3 hello.py</div><p>Buat file <code>hello.py</code> dengan <code>print("Halo, Python!")</code>. Untuk proyek, gunakan virtual environment agar dependensi tidak bercampur dengan paket sistem:</p><div class="codebox">python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python hello.py
+deactivate</div><p>Perintah instalasi paket dapat berbeda pada Debian/Ubuntu, Fedora, Arch, dan distribusi lain. Ikuti package manager distribusi yang digunakan. Hindari <code>sudo pip install</code> untuk memasang paket proyek ke Python sistem.</p><p><a href="https://www.petanikode.com/python-linux/" target="_blank" rel="noopener">Referensi Petani Kode: Python di Linux ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m1" data-group="python-course"> Saya dapat memeriksa Python 3 dan menjalankan file .py di Linux.</label></section>
+<section class="lesson" id="m2"><div class="eyebrow">02 / ENVIRONMENT · WINDOWS</div><h2>Menyiapkan Python di Windows</h2><p>Unduh Python 3 dari situs resmi. Saat instalasi, aktifkan opsi untuk menambahkan Python ke PATH jika installer menyediakannya. Setelah instalasi, buka PowerShell atau Command Prompt baru.</p><div class="codebox"># Periksa launcher dan versi Python
+py --version
+python --version
+
+# Jalankan interpreter
+py
+
+# Jalankan file
+py hello.py
+
+# Buat virtual environment
+py -m venv .venv
+.venv\\Scripts\\Activate.ps1
+
+# Perbarui pip di environment aktif
+python -m pip install --upgrade pip</div><p>Jika PowerShell menolak aktivasi script, jangan asal mengubah execution policy secara global. Baca pesan error dan dokumentasi Microsoft/Python, atau gunakan Command Prompt dengan <code>.venv\\Scripts\\activate.bat</code>. Editor seperti VS Code perlu diarahkan ke interpreter dari virtual environment proyek.</p><p><a href="https://www.petanikode.com/python-windows/" target="_blank" rel="noopener">Referensi Petani Kode: Python di Windows ↗</a> · <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Unduh Python resmi ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m2" data-group="python-course"> Saya dapat memasang Python 3 dan menjalankan file .py di Windows.</label></section>
+<section class="lesson" id="m3"><div class="eyebrow">03 / LANGUAGE BASICS</div><h2>Sintaks dasar Python</h2><p>Python menggunakan indentasi untuk menandai blok kode. Konsistensi indentasi wajib. Nama bersifat case-sensitive, statement umumnya ditulis satu per baris, dan komentar satu baris dimulai dengan <code>#</code>.</p><div class="codebox"># Program pertama
+nama = "ForgePath"
+
+if nama:
+    print(f"Selamat belajar, {nama}!")
+    print("Python menggunakan indentasi.")
+
+# Fungsi sederhana
+def sapa():
+    """Docstring menjelaskan tujuan fungsi."""
+    print("Halo!")
+
+sapa()</div><ul><li>Gunakan 4 spasi untuk satu tingkat indentasi, sesuai PEP 8.</li><li>Nama variabel dan fungsi umumnya memakai <code>snake_case</code>.</li><li>Nama class umumnya memakai <code>CapWords</code>.</li><li>String dapat memakai kutip tunggal atau ganda.</li><li>Triple quotes lazim digunakan untuk docstring, bukan komentar pengganti.</li></ul><p>Kesalahan indentasi bukan masalah kosmetik. Python menggunakannya untuk menentukan struktur program.</p><p><a href="https://www.petanikode.com/python-sintaks/" target="_blank" rel="noopener">Referensi Petani Kode: Sintaks Python ↗</a> · <a href="https://peps.python.org/pep-0008/" target="_blank" rel="noopener">PEP 8 Style Guide ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m3" data-group="python-course"> Saya memahami statement, indentasi, komentar, dan case-sensitive.</label></section>
+<section class="lesson" id="m4"><div class="eyebrow">04 / DATA</div><h2>Variabel dan tipe data</h2><p>Variabel mengikat nama ke objek. Python bersifat dynamically typed: tipe tidak perlu dideklarasikan pada setiap assignment, tetapi tipe objek tetap penting dan memengaruhi operasi yang valid.</p><div class="codebox">nama = "Alya"          # str
+umur = 20              # int
+tinggi = 1.65          # float
+aktif = True           # bool
+catatan = None         # NoneType
+
+print(type(nama))
+print(type(umur))
+
+# Konversi tipe secara eksplisit
+umur_teks = str(umur)
+angka = int("25")
+desimal = float("3.14")</div><p>Tipe dasar yang perlu dikenali: <code>str</code>, <code>int</code>, <code>float</code>, <code>bool</code>, dan <code>NoneType</code>. Konversi seperti <code>int("abc")</code> akan gagal; tangani input tidak valid pada modul berikutnya.</p><p><a href="https://www.petanikode.com/python-variabel-dan-tipe-data/" target="_blank" rel="noopener">Referensi Petani Kode: Variabel dan Tipe Data ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m4" data-group="python-course"> Saya dapat membuat variabel dan mengenali tipe datanya.</label></section>
+<section class="lesson" id="m5"><div class="eyebrow">05 / INPUT & OUTPUT</div><h2>Mengambil input dan menampilkan output</h2><p>Gunakan <code>print()</code> untuk menampilkan informasi dan <code>input()</code> untuk menerima teks dari pengguna. Nilai yang dikembalikan <code>input()</code> selalu berupa string, sehingga angka perlu dikonversi.</p><div class="codebox">nama = input("Nama: ")
+umur_teks = input("Umur: ")
+
+try:
+    umur = int(umur_teks)
+except ValueError:
+    print("Umur harus berupa bilangan bulat.")
+else:
+    print(f"Halo {nama}, tahun depan umurmu {umur + 1}.")
+
+# Output dengan format
+harga = 12500
+print(f"Harga: Rp{harga:,}")</div><p>Jangan menganggap input pengguna selalu valid. Program perlu memeriksa format, rentang, dan kemungkinan kegagalan konversi. Untuk uang, integer dalam satuan terkecil atau modul <code>decimal</code> lebih aman daripada float biasa.</p><p><a href="https://www.petanikode.com/python-input-output/" target="_blank" rel="noopener">Referensi Petani Kode: Input dan Output ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m5" data-group="python-course"> Saya dapat memakai input(), print(), f-string, dan konversi tipe.</label></section>
+<section class="lesson" id="m6"><div class="eyebrow">06 / EXPRESSIONS</div><h2>Operator Python</h2><p>Operator membentuk ekspresi. Kenali operator aritmatika, perbandingan, logika, assignment, keanggotaan, dan identitas. Perhatikan prioritas operator; gunakan tanda kurung jika ekspresi mulai sulit dibaca.</p><div class="codebox">a, b = 17, 5
+
+print(a + b)       # 22
+print(a // b)      # 3, floor division
+print(a % b)       # 2, modulo
+print(a ** 2)      # 289
+
+print(a > b)       # True
+print(a > 10 and b < 10)
+print("py" in "python")
+
+data = None
+print(data is None)  # identity check</div><p>Gunakan <code>==</code> untuk membandingkan kesetaraan nilai dan <code>is</code> untuk identitas objek, terutama pola seperti <code>is None</code>. Jangan memakai <code>is</code> sebagai pengganti <code>==</code> untuk angka atau string.</p><p><a href="https://www.petanikode.com/python-operator/" target="_blank" rel="noopener">Referensi Petani Kode: Operator ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m6" data-group="python-course"> Saya dapat menggunakan operator dan membedakan == dengan is.</label></section>
+<section class="lesson" id="m7"><div class="eyebrow">07 / CONTROL FLOW</div><h2>Percabangan</h2><p>Percabangan memilih blok kode berdasarkan kondisi. Python menggunakan <code>if</code>, <code>elif</code>, dan <code>else</code>. Kondisi dievaluasi sebagai nilai truthy atau falsy.</p><div class="codebox">nilai = 82
+
+if nilai >= 85:
+    predikat = "A"
+elif nilai >= 75:
+    predikat = "B"
+elif nilai >= 60:
+    predikat = "C"
+else:
+    predikat = "Perlu perbaikan"
+
+print(f"Predikat: {predikat}")</div><p>Uji batas kondisi, misalnya nilai 59, 60, 74, 75, 84, dan 85. Kesalahan umum adalah membuat rentang yang tumpang tindih atau tidak mencakup nilai batas.</p><p><a href="https://www.petanikode.com/python-percabangan/" target="_blank" rel="noopener">Referensi Petani Kode: Percabangan ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m7" data-group="python-course"> Saya dapat menyusun if, elif, else dan menguji batas kondisi.</label></section>
+<section class="lesson" id="m8"><div class="eyebrow">08 / ITERATION</div><h2>Perulangan</h2><p>Gunakan <code>for</code> untuk mengiterasi sequence atau iterable dan <code>while</code> untuk mengulang selama kondisi benar. <code>break</code> menghentikan loop, sedangkan <code>continue</code> melanjutkan ke iterasi berikutnya.</p><div class="codebox">for angka in range(1, 6):
+    print(angka)
+
+nama = ["Alya", "Bima", "Citra"]
+for indeks, item in enumerate(nama, start=1):
+    print(indeks, item)
+
+hitung = 3
+while hitung > 0:
+    print(hitung)
+    hitung -= 1
+
+print("Selesai")</div><p>Pastikan loop <code>while</code> memiliki kondisi berhenti yang dapat dicapai. Loop tak berujung dapat membuat program tampak macet. Latih juga penggunaan <code>break</code>, <code>continue</code>, dan loop bersarang.</p><p><a href="https://www.petanikode.com/python-perulangan/" target="_blank" rel="noopener">Referensi Petani Kode: Perulangan ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m8" data-group="python-course"> Saya dapat memakai for, while, range, break, dan continue.</label></section>
+<section class="lesson" id="m9"><div class="eyebrow">09 / DATA STRUCTURES</div><h2>List</h2><p>List adalah sequence yang berurutan dan mutable. List cocok untuk kumpulan item yang dapat ditambah, diubah, atau dihapus. Indeks dimulai dari nol dan slicing menggunakan batas akhir eksklusif.</p><div class="codebox">nilai = [78, 90, 82]
+nilai.append(88)
+nilai.insert(1, 85)
+nilai.remove(78)
+
+print(nilai[0])
+print(nilai[-1])
+print(nilai[1:3])
+
+for item in nilai:
+    print(item)
+
+nilai_urut = sorted(nilai)
+print(nilai_urut)</div><p>Bedakan <code>sort()</code> yang mengubah list di tempat dan <code>sorted()</code> yang menghasilkan list baru. Hati-hati saat menghapus item sambil mengiterasi list yang sama.</p><p><a href="https://www.petanikode.com/python-list/" target="_blank" rel="noopener">Referensi Petani Kode: List ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m9" data-group="python-course"> Saya dapat mengakses, menambah, mengubah, dan mengurutkan list.</label></section>
+<section class="lesson" id="m10"><div class="eyebrow">10 / DATA STRUCTURES</div><h2>Tuple</h2><p>Tuple adalah sequence yang immutable. Gunakan tuple untuk kumpulan nilai yang tidak perlu diubah setelah dibuat, misalnya koordinat atau pasangan konfigurasi.</p><div class="codebox">koordinat = ( -7.25, 112.75 )
+x, y = koordinat
+
+print(x, y)
+print(koordinat[0])
+
+# Tuple satu elemen memerlukan koma
+satu_item = ("Python",)
+
+# Konversi sequence
+daftar = list(koordinat)
+pasangan = tuple(daftar)</div><p>Immutable berarti elemen tuple tidak dapat diganti, tetapi jika tuple berisi objek mutable, objek di dalamnya mungkin tetap dapat berubah. Jadi, jangan menyamakan immutable dengan seluruh isi selalu beku.</p><p><a href="https://www.petanikode.com/python-tuple/" target="_blank" rel="noopener">Referensi Petani Kode: Tuple ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m10" data-group="python-course"> Saya memahami tuple, unpacking, dan perbedaannya dari list.</label></section>
+<section class="lesson" id="m11"><div class="eyebrow">11 / DATA STRUCTURES</div><h2>Dictionary</h2><p>Dictionary menyimpan pasangan key-value. Key harus hashable dan unik. Dictionary cocok untuk merepresentasikan satu entitas dengan atribut bernama.</p><div class="codebox">mahasiswa = {
+    "nama": "Dina",
+    "nim": "24001",
+    "aktif": True
+}
+
+print(mahasiswa["nama"])
+print(mahasiswa.get("prodi", "Belum diisi"))
+
+mahasiswa["prodi"] = "Teknik Elektro"
+
+for key, value in mahasiswa.items():
+    print(key, value)</div><p>Akses dengan tanda kurung siku akan memunculkan <code>KeyError</code> jika key tidak ada. Gunakan <code>get()</code> bila key bersifat opsional. Jangan menggunakan data sensitif nyata pada latihan publik.</p><p><a href="https://www.petanikode.com/python-dictionary/" target="_blank" rel="noopener">Referensi Petani Kode: Dictionary ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m11" data-group="python-course"> Saya dapat membuat, membaca, memperbarui, dan mengiterasi dictionary.</label></section>
+<section class="lesson" id="m12"><div class="eyebrow">12 / REUSABLE CODE</div><h2>Fungsi</h2><p>Fungsi membungkus tugas agar dapat dipanggil ulang. Parameter menerima masukan, <code>return</code> mengirim hasil kembali. Pisahkan perhitungan dari input/output agar fungsi lebih mudah diuji.</p><div class="codebox">def hitung_rata_rata(data):
+    """Mengembalikan rata-rata dari sequence angka."""
+    if not data:
+        raise ValueError("Data tidak boleh kosong")
+    return sum(data) / len(data)
+
+nilai = [80, 90, 85]
+rata = hitung_rata_rata(nilai)
+print(f"Rata-rata: {rata:.2f}")</div><p>Pelajari parameter positional, keyword, default, ruang lingkup variabel, docstring, dan nilai balik. Hindari mutable default seperti <code>def f(items=[])</code>; gunakan <code>None</code> sebagai default lalu buat objek baru di dalam fungsi.</p><p><a href="https://www.petanikode.com/python-fungsi/" target="_blank" rel="noopener">Referensi Petani Kode: Fungsi ↗</a> · <a href="https://docs.python.org/id/3/tutorial/controlflow.html#defining-functions" target="_blank" rel="noopener">Dokumentasi fungsi ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m12" data-group="python-course"> Saya dapat membuat fungsi dengan parameter dan return.</label></section>
+<section class="lesson" id="m13"><div class="eyebrow">13 / FUNCTIONAL TOOLS</div><h2>Lambda</h2><p>Lambda membuat fungsi anonim sederhana yang terdiri dari satu ekspresi. Gunakan saat fungsi singkat membantu memperjelas operasi, bukan untuk menyembunyikan logika kompleks.</p><div class="codebox">kuadrat = lambda angka: angka ** 2
+print(kuadrat(5))
+
+data = [("Dina", 82), ("Bima", 91), ("Alya", 87)]
+urut = sorted(data, key=lambda item: item[1])
+print(urut)
+
+angka = [1, 2, 3, 4, 5, 6]
+genap = list(filter(lambda n: n % 2 == 0, angka))
+print(genap)</div><p>Untuk operasi sederhana, list comprehension atau fungsi bernama sering lebih mudah dibaca. Lambda hanya boleh berisi satu ekspresi, bukan blok statement multi-baris.</p><p><a href="https://www.petanikode.com/python-lambda/" target="_blank" rel="noopener">Referensi Petani Kode: Lambda ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m13" data-group="python-course"> Saya dapat menggunakan lambda secara ringkas dan terbaca.</label></section>
+<section class="lesson" id="m14"><div class="eyebrow">14 / FUNCTION ARGUMENTS</div><h2>*args dan **kwargs</h2><p><code>*args</code> menampung sejumlah argumen positional tambahan sebagai tuple, sedangkan <code>**kwargs</code> menampung argumen keyword tambahan sebagai dictionary. Tanda bintang juga dipakai untuk unpacking saat pemanggilan fungsi.</p><div class="codebox">def ringkasan(judul, *args, **kwargs):
+    print("Judul:", judul)
+    print("Argumen tambahan:", args)
+    print("Opsi:", kwargs)
+
+ringkasan(
+    "Laporan",
+    "draft",
+    "review",
+    penulis="Dina",
+    versi=2
+)
+
+angka = [10, 20, 30]
+print(*angka)
+
+opsi = {"sep": " | ", "end": "\\n"}
+print("A", "B", **opsi)</div><p>Jangan memakai <code>*args</code>/<code>**kwargs</code> otomatis pada semua fungsi. Parameter eksplisit biasanya lebih mudah dibaca dan divalidasi. Gunakan bentuk variadik saat memang diperlukan fleksibilitas API.</p><p><a href="https://www.petanikode.com/python-args-kwargs/" target="_blank" rel="noopener">Referensi Petani Kode: *args dan **kwargs ↗</a> · <a href="https://docs.python.org/id/3/tutorial/controlflow.html#arbitrary-argument-lists" target="_blank" rel="noopener">Dokumentasi argumen fungsi ↗</a></p><label class="check-row"><input type="checkbox" data-progress="py-m14" data-group="python-course"> Saya memahami *args, **kwargs, dan unpacking argumen.</label></section>
+<div class="panel"><div class="panel-head"><h2>Python course progress</h2><span class="muted" data-progress-count="python-course">0/14</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="python-course"></div></div><p class="muted">Progress tersimpan di browser ini menggunakan localStorage. Tidak tersinkron ke perangkat lain. Selesaikan latihan terminal di komputer sendiri; Web Playground ForgePath saat ini bukan interpreter Python.</p></div>
+<div class="note-strip"><span class="note-icon">i</span><div><b>Catatan versi dan sumber</b><p>Kursus ini disusun ulang dengan contoh Python 3 modern berdasarkan urutan topik Petani Kode. Sejumlah tutorial lama dapat memuat contoh Python 2 seperti print tanpa tanda kurung atau raw_input(); contoh di ForgePath menggunakan Python 3. Baca dokumentasi resmi untuk detail versi, pustaka, dan perilaku terbaru. Referensi Petani Kode adalah bacaan pendamping, bukan pengganti dokumentasi resmi.</p></div></div>
+</div></div></main>
+<footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer>
+</body></html>
