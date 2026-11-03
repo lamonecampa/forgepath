@@ -1,0 +1,1 @@
+import{j as r,_ as t}from"../php-runtime.js";async function i(){return await r()?await t(()=>import("./php_5_2-D1nvjCwN.js"),[],import.meta.url):await t(()=>import("./php_5_2-B5YzXPHq.js"),[],import.meta.url)}export{i as getPHPLoaderModule,r as jspi};

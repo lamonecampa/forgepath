@@ -1,0 +1,1 @@
+const e=""+new URL("../assets/intl-BeZenS9-.so",import.meta.url).href;export{e as default};
