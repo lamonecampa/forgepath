@@ -1,0 +1,91 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kursus Laravel — ForgePath</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/app.js"></script></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><nav class="nav"><a href="index.html">Overview</a><a href="php-course.html">PHP</a><a href="mysql-course.html">MySQL</a><a class="active" href="laravel-course.html">Laravel</a><a href="projects.html">Projects</a></nav><a class="nav-cta" href="projects.html">Project Path ↗</a><button class="menu-toggle" aria-label="Buka menu">☰</button></header><main class="wrap"><section class="page-hero"><div class="eyebrow">COURSE 03 / PHP FRAMEWORK</div><h1>Laravel: dari route<br>ke aplikasi CRUD.</h1><p>Bangun aplikasi terstruktur dengan routing, controller, Blade, migration, Eloquent, validasi, autentikasi, testing, dan deployment.</p><div class="tag-row"><span>Laravel 13 baseline</span><span>PHP 8.3+</span><span>9 modul</span></div></section><div class="content-layout"><aside class="sidebar"><p class="sidebar-label">LARAVEL CURRICULUM</p><a href="#l01">01 · Framework & setup</a><a href="#l02">02 · Struktur proyek</a><a href="#l03">03 · Routing</a><a href="#l04">04 · MVC & Blade</a><a href="#l05">05 · Migration & Eloquent</a><a href="#l06">06 · CRUD</a><a href="#l07">07 · Validasi & keamanan</a><a href="#l08">08 · Auth & testing</a><a href="#l09">09 · Deployment</a></aside><div class="lessons">
+<section class="lesson" id="l01"><div class="eyebrow">MODULE 01 / FRAMEWORK BASICS</div><h2>Mengapa Laravel dan apa prasyaratnya?</h2><p>Framework menyediakan struktur dan komponen siap pakai agar pengembang tidak perlu merancang ulang routing, validasi, akses database, templating, dan banyak kebutuhan umum. Laravel adalah framework PHP yang mengadopsi pola dan praktik modern.</p><p>Jangan mulai Laravel sebelum memahami variabel, fungsi, array, OOP dasar, Composer, HTTP request/response, serta SQL. Tanpa fondasi itu, error framework akan terasa seperti rangkaian mantra, bukan masalah yang bisa dianalisis.</p><h3>Persiapan lingkungan</h3><ul><li>PHP versi yang didukung oleh Laravel yang dipilih.</li><li>Composer untuk dependency PHP.</li><li>Database MySQL atau database lain yang didukung.</li><li>Node.js dan npm bila proyek memakai build aset frontend.</li><li>Terminal dan Git.</li></ul><div class="callout">Versi acuan halaman ini adalah Laravel 13. Periksa persyaratan dan dokumentasi resmi sebelum instalasi. Laravel 13 dirilis pada 17 Maret 2026 dan membutuhkan PHP minimal 8.3. Tutorial Laravel 5.x/8.x/12.x mungkin berbeda dalam struktur file, API, dan konfigurasi. Jangan menyalin perintah lintas versi tanpa verifikasi.</div><div class="codebox">composer create-project laravel/laravel forgepath-app
+cd forgepath-app
+php artisan --version
+php artisan serve</div><p>Dokumentasi resmi: <a href="https://laravel.com/docs/13.x" target="_blank" rel="noopener"><b>Laravel 13 Docs ↗</b></a>.</p><label class="check-row"><input type="checkbox" data-progress="laravel-course-1" data-group="laravelcourse"> Saya memahami prasyarat dan dapat membuat proyek Laravel.</label></section>
+<section class="lesson" id="l02"><div class="eyebrow">MODULE 02 / PROJECT STRUCTURE</div><h2>Mengenali struktur proyek</h2><p>Proyek Laravel memiliki direktori dengan tanggung jawab berbeda. <code>app/</code> menyimpan kode aplikasi, <code>routes/</code> mendefinisikan endpoint, <code>resources/views/</code> menyimpan template Blade, <code>database/</code> berisi migration dan seeder, sedangkan <code>public/</code> menjadi document root web.</p><div class="codebox">app/
+  Http/Controllers/
+  Models/
+bootstrap/
+config/
+database/
+  migrations/
+  seeders/
+public/
+resources/views/
+routes/
+  web.php
+storage/
+tests/
+vendor/</div><p>Folder <code>vendor/</code> dikelola Composer dan biasanya tidak diedit manual. File <code>.env</code> berisi konfigurasi lingkungan dan rahasia; jangan commit ke repository publik. Sediakan <code>.env.example</code> tanpa kredensial asli.</p><label class="check-row"><input type="checkbox" data-progress="laravel-course-2" data-group="laravelcourse"> Saya mengetahui lokasi route, controller, model, view, migration, dan konfigurasi.</label></section>
+<section class="lesson" id="l03"><div class="eyebrow">MODULE 03 / ROUTING</div><h2>Routing dan HTTP methods</h2><p>Route memetakan URL dan HTTP method ke aksi aplikasi. Gunakan GET untuk membaca, POST untuk membuat, PUT/PATCH untuk memperbarui, dan DELETE untuk menghapus resource. Nama route membantu membuat tautan yang tidak bergantung pada URL hard-coded.</p><div class="codebox">use Illuminate\Support\Facades\Route;
+
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])
+    ->name('mahasiswa.index');
+
+Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])
+    ->name('mahasiswa.create');
+
+Route::post('/mahasiswa', [MahasiswaController::class, 'store'])
+    ->name('mahasiswa.store');</div><p>Route resource dapat menghasilkan pola CRUD standar. Gunakan middleware untuk menerapkan autentikasi atau aturan akses. Jangan menganggap menyembunyikan tombol di tampilan sudah cukup untuk mengamankan endpoint.</p><div class="codebox">Route::resource('mahasiswa', MahasiswaController::class);
+php artisan route:list</div><label class="check-row"><input type="checkbox" data-progress="laravel-course-3" data-group="laravelcourse"> Saya dapat mendefinisikan route dan membaca route:list.</label></section>
+<section class="lesson" id="l04"><div class="eyebrow">MODULE 04 / MVC & BLADE</div><h2>MVC, controller, dan Blade view</h2><p>Dalam pola MVC, Model mengelola representasi data/domain, View menyajikan antarmuka, dan Controller mengoordinasikan request serta respons. Tujuannya memisahkan tanggung jawab, bukan sekadar membuat banyak file.</p><div class="codebox">class MahasiswaController extends Controller
+{
+    public function index()
+    {
+        $mahasiswa = Mahasiswa::latest()->paginate(10);
+        return view('mahasiswa.index', compact('mahasiswa'));
+    }
+}</div><p>Blade mendukung layout, komponen, directive, dan escaping output. Gunakan <code>{{ $nilai }}</code> untuk output yang di-escape secara default. Sintaks {!! !!} menampilkan HTML mentah dan hanya boleh digunakan untuk konten yang benar-benar dipercaya atau telah disanitasi dengan benar.</p><div class="codebox">@extends('layouts.app')
+
+@section('content')
+  &lt;h1&gt;Daftar Mahasiswa&lt;/h1&gt;
+  @foreach ($mahasiswa as $item)
+    &lt;p&gt;{{ $item-&gt;nama }}&lt;/p&gt;
+  @endforeach
+  {{ $mahasiswa-&gt;links() }}
+@endsection</div><label class="check-row"><input type="checkbox" data-progress="laravel-course-4" data-group="laravelcourse"> Saya memahami alur route → controller → model → view.</label></section>
+<section class="lesson" id="l05"><div class="eyebrow">MODULE 05 / DATABASE</div><h2>Migration, model, factory, dan Eloquent</h2><p>Migration mendeskripsikan perubahan struktur database dalam kode yang dapat dilacak melalui version control. Eloquent ORM memetakan model ke tabel dan menyediakan API untuk query serta relasi.</p><div class="codebox">php artisan make:model Mahasiswa -m
+
+Schema::create('mahasiswa', function (Blueprint $table) {
+    $table->id();
+    $table->string('nim', 20)->unique();
+    $table->string('nama', 120);
+    $table->string('email')->nullable();
+    $table->timestamps();
+});
+
+php artisan migrate</div><p>Konfigurasi koneksi database berada di environment/config. Model dapat mengatur nama tabel, primary key, casts, dan relasi. Pahami mass assignment: gunakan <code>$fillable</code> atau <code>$guarded</code> secara sadar, bukan membiarkan semua field dapat diisi sembarang request.</p><div class="codebox">$mahasiswa = Mahasiswa::create([
+    'nim' => '24001',
+    'nama' => 'Rani Putri',
+    'email' => 'rani@example.com',
+]);
+
+$daftar = Mahasiswa::where('nama', 'like', 'R%')
+    ->orderBy('nama')
+    ->paginate(10);</div><label class="check-row"><input type="checkbox" data-progress="laravel-course-5" data-group="laravelcourse"> Saya dapat membuat migration dan query dasar melalui Eloquent.</label></section>
+<section class="lesson" id="l06"><div class="eyebrow">MODULE 06 / CRUD WORKFLOW</div><h2>Membangun CRUD lengkap</h2><p>CRUD memerlukan lebih dari empat query. Rancang alur daftar, detail, formulir tambah, proses simpan, formulir edit, proses pembaruan, dan penghapusan. Berikan redirect dan feedback setelah operasi berhasil.</p><div class="codebox">public function store(Request $request)
+{
+    $validated = $request->validate([
+        'nim' => ['required', 'string', 'max:20', 'unique:mahasiswa,nim'],
+        'nama' => ['required', 'string', 'max:120'],
+        'email' => ['nullable', 'email', 'max:160'],
+    ]);
+
+    Mahasiswa::create($validated);
+
+    return redirect()
+        ->route('mahasiswa.index')
+        ->with('success', 'Data berhasil disimpan.');
+}</div><p>Untuk update, aturan unique perlu mengabaikan record yang sedang diedit. Untuk delete, pastikan pengguna berwenang dan pertimbangkan soft delete bila data perlu dipulihkan. Gunakan form method spoofing untuk PUT/PATCH/DELETE dan sertakan token CSRF.</p><label class="check-row"><input type="checkbox" data-progress="laravel-course-6" data-group="laravelcourse"> Saya dapat membangun alur CRUD dengan validasi.</label></section>
+<section class="lesson" id="l07"><div class="eyebrow">MODULE 07 / SECURITY</div><h2>Validasi, otorisasi, dan keamanan</h2><p>Validasi memeriksa apakah input memenuhi aturan. Otorisasi menentukan apakah pengguna tertentu boleh melakukan aksi pada resource. Keduanya berbeda dan sama-sama diperlukan.</p><ul><li>Gunakan Form Request atau validator untuk aturan input.</li><li>Gunakan policy/gate untuk mengontrol akses terhadap resource.</li><li>Jaga CSRF protection untuk form web.</li><li>Gunakan query builder/Eloquent dan hindari merangkai SQL mentah dari input.</li><li>Escape output di Blade dan sanitasi konten HTML bila memang diperlukan.</li><li>Rahasiakan APP_KEY, password database, token, dan kredensial layanan.</li><li>Gunakan HTTPS dan konfigurasi cookie/session yang sesuai.</li></ul><p>Jangan pernah menampilkan stack trace, query, path file, atau konfigurasi rahasia kepada pengunjung production.</p><label class="check-row"><input type="checkbox" data-progress="laravel-course-7" data-group="laravelcourse"> Saya dapat membedakan validasi dan otorisasi serta menerapkan kontrol dasar.</label></section>
+<section class="lesson" id="l08"><div class="eyebrow">MODULE 08 / AUTH & TESTING</div><h2>Autentikasi, middleware, dan pengujian</h2><p>Autentikasi memastikan identitas pengguna; otorisasi menentukan haknya. Gunakan starter kit resmi atau mekanisme autentikasi yang sesuai versi Laravel, bukan membangun sistem password sendiri tanpa memahami risikonya.</p><p>Middleware dapat membatasi route berdasarkan status login, role, atau kondisi request. Pengujian membantu memastikan alur aplikasi tetap benar saat kode berubah.</p><div class="codebox">php artisan make:test MahasiswaTest
+
+php artisan test</div><p>Uji setidaknya: halaman dapat diakses, pengguna tanpa izin ditolak, input tidak valid menghasilkan error validasi, data valid tersimpan, update mengubah record yang benar, dan delete tidak menghapus record lain.</p><label class="check-row"><input type="checkbox" data-progress="laravel-course-8" data-group="laravelcourse"> Saya memahami autentikasi, middleware, dan pengujian dasar.</label></section>
+<section class="lesson" id="l09"><div class="eyebrow">MODULE 09 / DEPLOYMENT</div><h2>Deployment dan pemeliharaan</h2><p>Deployment memindahkan aplikasi dari lingkungan pengembangan ke server produksi. Pastikan document root diarahkan ke direktori <code>public</code>, bukan root proyek. Folder storage dan cache harus memiliki permission yang tepat, dan file rahasia tidak boleh dapat diakses publik.</p><div class="codebox">composer install --no-dev --optimize-autoloader
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan migrate --force</div><p>Perintah dan proses deployment dapat berbeda menurut hosting dan versi Laravel. Bangun aset frontend bila proyek menggunakannya. Atur environment production, APP_DEBUG=false, HTTPS, backup database, log, queue, scheduler, dan proses rollback. Uji restore backup secara berkala.</p><div class="callout">Jangan mengunggah folder vendor atau .env ke repositori publik hanya karena tutorial menyuruh mengirim seluruh folder proyek. Ikuti metode deployment yang sesuai platform dan dokumentasi versi yang dipakai.</div><p>Dokumentasi: <a href="https://laravel.com/docs/13.x/deployment" target="_blank" rel="noopener"><b>Laravel Deployment ↗</b></a>.</p><label class="check-row"><input type="checkbox" data-progress="laravel-course-9" data-group="laravelcourse"> Saya dapat menjelaskan checklist deployment aplikasi Laravel.</label></section>
+<div class="panel"><div class="panel-head"><h2>Progress kursus Laravel</h2><span class="muted" data-progress-count="laravelcourse">0/9</span></div><div class="progress-wrap"><div class="progress-fill" data-progress-bar="laravelcourse"></div></div><p class="muted">Selesaikan dengan membangun aplikasi CRUD dan uji alur pengguna.</p><a class="button button-dark" href="projects.html">Kerjakan proyek Laravel →</a></div>
+</div></div></main><footer class="footer wrap"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>forgepath<span class="brand-dot">.</span></span></a><span>Learn the fundamentals. Build with confidence.</span><span>© 2026 ForgePath</span></footer></body></html>
