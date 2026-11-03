@@ -1,0 +1,16 @@
+{
+  "name": "forgepath",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:php": "vite build --config vite.php.config.js"
+  },
+  "dependencies": {
+    "@php-wasm/universal": "3.1.60",
+    "@php-wasm/web": "3.1.60"
+  },
+  "devDependencies": {
+    "vite": "8.3.5"
+  }
+}
